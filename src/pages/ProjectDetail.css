@@ -42,6 +42,10 @@
   margin-top: 24px;
 }
 
+.detail-cover {
+  margin-bottom: 48px;
+}
+
 /* ---------- Coles-Notes summary card ---------- */
 .coles-card {
   position: relative;

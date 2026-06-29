@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
 import Reveal from '../components/Reveal';
+import MediaSlot from '../components/MediaSlot';
 import { getProject } from '../data/projects';
 import NotFound from './NotFound';
 import './ProjectDetail.css';
@@ -52,6 +53,13 @@ export default function ProjectDetail() {
                 </div>
               )}
             </header>
+          </Reveal>
+
+          {/* Cover image / render slot */}
+          <Reveal delay={0.04}>
+            <div className="detail-cover">
+              <MediaSlot src={project.cover} ratio="video" label="Project image / render" />
+            </div>
           </Reveal>
 
           {/* Coles-Notes summary: the 10-second version */}

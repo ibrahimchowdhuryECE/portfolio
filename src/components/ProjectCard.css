@@ -1,9 +1,9 @@
 .prow {
   display: grid;
-  grid-template-columns: 130px 1fr 28px;
+  grid-template-columns: 92px 1fr 28px;
   gap: 28px;
-  align-items: start;
-  padding: 32px 8px;
+  align-items: center;
+  padding: 28px 8px;
   border-top: 1px solid var(--line);
   transition: padding-left 0.22s ease, background 0.22s ease;
 }
@@ -13,19 +13,32 @@
   background: var(--panel);
 }
 
+.prow-thumb {
+  width: 92px;
+}
+
+.prow-thumb .mslot {
+  transition: border-color 0.22s ease;
+}
+
+.prow:hover .prow-thumb .mslot {
+  border-color: var(--ink);
+}
+
 .prow-cat {
+  display: inline-block;
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--pewter);
-  padding-top: 6px;
+  margin-bottom: 8px;
 }
 
 .prow-title {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(22px, 3.4vw, 34px);
+  font-size: clamp(22px, 3.4vw, 32px);
   letter-spacing: -0.02em;
   color: var(--ink);
 }
@@ -46,7 +59,6 @@
   font-family: var(--display);
   font-size: 24px;
   color: var(--ink);
-  padding-top: 4px;
   transition: transform 0.22s ease;
 }
 
@@ -56,17 +68,18 @@
 
 @media (max-width: 680px) {
   .prow {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 26px 6px;
+    grid-template-columns: 72px 1fr;
+    gap: 18px;
+    padding: 24px 6px;
+    align-items: start;
   }
 
   .prow:hover {
     padding-left: 6px;
   }
 
-  .prow-cat {
-    padding-top: 0;
+  .prow-thumb {
+    width: 72px;
   }
 
   .prow-arrow {

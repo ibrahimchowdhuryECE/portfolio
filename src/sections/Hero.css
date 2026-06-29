@@ -1,9 +1,13 @@
 .hero {
-  padding-top: clamp(48px, 8vw, 96px);
+  padding-top: clamp(40px, 6vw, 80px);
   padding-bottom: 0;
 }
 
 .hero-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
   padding-bottom: clamp(40px, 6vw, 72px);
 }
 
@@ -29,49 +33,57 @@
 .hero-name {
   font-family: var(--display);
   font-weight: 600;
-  font-size: clamp(56px, 13vw, 150px);
+  font-size: clamp(52px, 9vw, 108px);
   line-height: 0.92;
   letter-spacing: -0.04em;
   color: var(--ink);
-  margin-top: clamp(28px, 5vw, 56px);
+  margin-top: clamp(26px, 4vw, 48px);
 }
 
 .hero-readout {
   font-family: var(--mono);
-  font-size: clamp(13px, 1.6vw, 15px);
+  font-size: clamp(12px, 1.5vw, 14px);
   letter-spacing: 0.04em;
   color: var(--graphite);
-  margin-top: 26px;
+  margin-top: 24px;
 }
 
 .hero-tagline {
   font-family: var(--serif);
-  font-size: clamp(18px, 2.2vw, 23px);
+  font-size: clamp(17px, 2vw, 21px);
   line-height: 1.55;
   color: var(--graphite);
-  max-width: 54ch;
-  margin-top: 18px;
+  max-width: 48ch;
+  margin-top: 16px;
 }
 
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 34px;
+  margin-top: 30px;
 }
 
-/* full-bleed signature trace under the hero text */
+.hero-media {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-media .mslot {
+  max-width: 340px;
+}
+
+/* full-bleed signature trace under the hero */
 .hero-signal {
   position: relative;
   width: 100%;
-  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding-block: clamp(16px, 3vw, 32px);
+  padding-block: clamp(16px, 3vw, 30px);
   background: var(--panel);
 }
 
 .hero-signal .signal {
-  height: clamp(90px, 14vw, 170px);
+  height: clamp(84px, 13vw, 150px);
 }
 
 .hero-signal-label {
@@ -83,4 +95,19 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--pewter);
+}
+
+@media (max-width: 880px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+
+  .hero-media .mslot {
+    max-width: 260px;
+  }
 }

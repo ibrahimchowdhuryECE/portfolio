@@ -12,7 +12,8 @@ export type Project = {
   blurb: string; // one-line summary shown on the card
   tags: string[]; // short tech/skill tags, e.g. ["Embedded", "Sensors"]
   featured?: boolean; // (reserved) flag to highlight a project later
-  thumbnail?: string; // optional image path; leave undefined for a placeholder
+  thumbnail?: string; // small icon/image for the index row; undefined -> placeholder
+  cover?: string; // wide cover image/render for the detail page; undefined -> placeholder
 
   // "Coles Notes" — the 10-second scannable summary at the top of the page
   summary: {

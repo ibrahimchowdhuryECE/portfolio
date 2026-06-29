@@ -1,0 +1,71 @@
+/* tall section provides the scroll distance the line draws over */
+.signalpin {
+  position: relative;
+  height: 200vh;
+}
+
+/* pinned viewport — stays put (looks paused) while you scroll the section */
+.signalpin-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(20px, 5vh, 44px);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.signalpin-label-top {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+
+.signalpin-svg {
+  display: block;
+  width: 100%;
+  height: clamp(110px, 22vh, 240px);
+  overflow: visible;
+}
+
+.signalpin-base {
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.signalpin-path {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.signalpin-label {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+
+/* reduced motion: a normal static band, no pin */
+.signalpin-static {
+  width: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  padding-block: clamp(16px, 3vw, 30px);
+}
+
+.signalpin-static .signalpin-svg {
+  height: clamp(84px, 13vw, 150px);
+}

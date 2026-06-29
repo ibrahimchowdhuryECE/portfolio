@@ -38,11 +38,11 @@ export const profile = {
     },
   ],
 
-  // Contact + social links. [TODO] = replace with your real links.
+  // Contact details.
   contact: {
-    email: 'isc.05@yahoo.com',
+    email: 'ischowdh@uwaterloo.ca', // shown as plain text (not a link)
     github: 'https://github.com/ibrahimchowdhuryECE',
-    linkedin: '', // [TODO] add your LinkedIn URL
-    resume: '', // [TODO] add a link/path to your résumé PDF
+    githubLabel: 'github.com/ibrahimchowdhuryECE',
+    location: 'Toronto, Canada',
   },
 };

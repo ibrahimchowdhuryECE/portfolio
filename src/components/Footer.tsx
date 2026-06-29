@@ -8,10 +8,8 @@ export default function Footer() {
         <span className="footer-name">
           <span className="footer-mark" aria-hidden="true" /> Ibrahim Chowdhury
         </span>
-        <span className="footer-meta">Built with React + TypeScript · Waterloo, ON</span>
-        <a className="footer-link" href={`mailto:${profile.contact.email}`}>
-          {profile.contact.email}
-        </a>
+        <span className="footer-meta">Built with React + TypeScript · Toronto, Canada</span>
+        <span className="footer-link">{profile.contact.email}</span>
       </div>
     </footer>
   );

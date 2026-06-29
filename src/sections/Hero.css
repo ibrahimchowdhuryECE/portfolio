@@ -73,30 +73,6 @@
   max-width: 340px;
 }
 
-/* full-bleed signature trace under the hero */
-.hero-signal {
-  position: relative;
-  width: 100%;
-  border-bottom: 1px solid var(--line);
-  padding-block: clamp(16px, 3vw, 30px);
-  background: var(--panel);
-}
-
-.hero-signal .signal {
-  height: clamp(84px, 13vw, 150px);
-}
-
-.hero-signal-label {
-  position: absolute;
-  right: 32px;
-  bottom: 10px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--pewter);
-}
-
 @media (max-width: 880px) {
   .hero-inner {
     grid-template-columns: 1fr;

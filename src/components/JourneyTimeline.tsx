@@ -1,5 +1,6 @@
 import { profile } from '../data/profile';
 import Reveal from './Reveal';
+import MediaSlot from './MediaSlot';
 import './JourneyTimeline.css';
 
 export default function JourneyTimeline() {
@@ -12,6 +13,7 @@ export default function JourneyTimeline() {
             <span className="timeline-dot-inner" />
           </div>
           <div className="timeline-card card">
+            <MediaSlot ratio="video" label="Campus" className="timeline-media" />
             <span className="timeline-time">{stop.time}</span>
             <h3 className="timeline-place">{stop.place}</h3>
             <span className="timeline-location">{stop.location}</span>

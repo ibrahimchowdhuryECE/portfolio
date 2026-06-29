@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { profile } from '../data/profile';
-import SignalTrace from '../components/SignalTrace';
 import MediaSlot from '../components/MediaSlot';
 import Marquee from '../components/Marquee';
 import './Hero.css';
@@ -61,11 +60,6 @@ export default function Hero() {
       </div>
 
       <Marquee />
-
-      <div className="hero-signal" aria-hidden="true">
-        <SignalTrace duration={2.6} delay={0.5} />
-        <span className="hero-signal-label">breath glucose · sensing signal</span>
-      </div>
     </section>
   );
 }

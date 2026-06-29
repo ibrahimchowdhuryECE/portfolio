@@ -43,11 +43,16 @@
 }
 
 .timeline-card {
-  padding: 24px;
+  padding: 20px;
   width: 100%;
+  text-align: left;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+}
+
+.timeline-media {
+  margin-bottom: 18px;
 }
 
 .timeline-time {

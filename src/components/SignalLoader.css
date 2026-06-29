@@ -1,0 +1,103 @@
+/* tall scroller — the extra height is the "scrub" distance */
+.loader {
+  position: relative;
+  height: 260vh;
+}
+
+/* pinned viewport — this is what stays frozen on screen */
+.loader-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(24px, 5vh, 56px);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.loader-head {
+  text-align: center;
+}
+
+.loader-tag {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+
+.loader-pct {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: clamp(40px, 9vw, 92px);
+  line-height: 1;
+  color: var(--ink);
+  margin-top: 10px;
+}
+
+.loader-svg {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 24vh, 260px);
+  overflow: visible;
+}
+
+.loader-base {
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.loader-path {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.loader-hint {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  animation: loader-bob 1.7s ease-in-out infinite;
+}
+
+@keyframes loader-bob {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(3px);
+  }
+}
+
+/* completed / reduced-motion: a normal static band with the line fully drawn */
+.loader-done {
+  width: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  padding-block: clamp(16px, 3vw, 30px);
+}
+
+.loader-done .loader-svg {
+  height: clamp(84px, 13vw, 150px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-hint {
+    animation: none;
+  }
+}

@@ -1,11 +1,5 @@
 import { useRef } from 'react';
-import {
-  motion,
-  useScroll,
-  useMotionValue,
-  useMotionValueEvent,
-  useReducedMotion,
-} from 'motion/react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { profile } from '../data/profile';
 import MediaSlot from '../components/MediaSlot';
@@ -40,16 +34,10 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  // `drawn` only ever increases, so the line fills as you scroll down and never
-  // redraws backward when you scroll up.
-  const drawn = useMotionValue(reduce ? 1 : 0.06);
-  useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    if (reduce) return;
-    // reach a full line at ~75% of the hero scroll, so it completes while still
-    // visible (just as Projects approaches) rather than exactly as it exits.
-    const mapped = Math.min(1, 0.06 + v * 1.3);
-    if (mapped > drawn.get()) drawn.set(mapped);
-  });
+  // `drawn` tracks scroll directly: scrolling down draws the line, scrolling up
+  // unwinds it. It hits a full line at ~80% of the hero scroll (and clamps to 1
+  // after) so it always reaches the end before Projects.
+  const drawn = useTransform(scrollYProgress, [0, 0.8], [0.04, 1]);
 
   return (
     <section id="top" className="hero" ref={ref}>
@@ -107,7 +95,7 @@ export default function Hero() {
           <motion.path
             className="hero-signal-path"
             d={SIGNAL_PATH}
-            style={{ pathLength: drawn }}
+            style={{ pathLength: reduce ? 1 : drawn }}
           />
         </svg>
         <span className="hero-signal-label">breath glucose · sensing signal</span>

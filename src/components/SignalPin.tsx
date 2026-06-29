@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useReducedMotion } from 'motion/react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react';
 import './SignalPin.css';
 
 // Biosignal waveform, stretched edge-to-edge (length scales with the window).
@@ -25,6 +25,10 @@ export default function SignalPin() {
     offset: ['start end', 'start start'],
   });
 
+  // Finish a hair before the very top so the line is guaranteed to reach the
+  // full right edge (clamps at 1) rather than stopping ~98% short.
+  const drawn = useTransform(scrollYProgress, [0, 0.92], [0, 1]);
+
   return (
     <div ref={ref} className="signalband" aria-hidden="true">
       <svg className="signalband-svg" viewBox="0 0 1200 140" fill="none" preserveAspectRatio="none">
@@ -32,7 +36,7 @@ export default function SignalPin() {
         <motion.path
           className="signalband-path"
           d={SIGNAL_PATH}
-          style={{ pathLength: reduce ? 1 : scrollYProgress }}
+          style={{ pathLength: reduce ? 1 : drawn }}
         />
       </svg>
       <span className="signalband-label">breath glucose · sensing signal</span>

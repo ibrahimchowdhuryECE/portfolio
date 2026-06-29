@@ -12,7 +12,8 @@ import { setLenis, getLenis } from './lib/smoothScroll';
 /** Smooth, inertia-based scrolling for the whole site (Lenis). */
 function useSmoothScroll() {
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true, anchors: true });
+    // Higher lerp = snappier/more responsive (less floaty lag).
+    const lenis = new Lenis({ lerp: 0.22, wheelMultiplier: 1.1, smoothWheel: true, anchors: true });
     setLenis(lenis);
 
     let id = requestAnimationFrame(function raf(time) {

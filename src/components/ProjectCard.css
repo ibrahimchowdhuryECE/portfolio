@@ -20,8 +20,8 @@
   display: grid;
   place-items: center;
   background:
-    radial-gradient(circle at 30% 20%, rgba(6, 182, 212, 0.16), transparent 60%),
-    radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.18), transparent 55%),
+    radial-gradient(circle at 30% 20%, rgba(255, 90, 60, 0.16), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(43, 84, 255, 0.18), transparent 55%),
     var(--surface-2);
   border-bottom: 1px solid var(--border);
 }

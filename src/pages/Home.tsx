@@ -1,17 +1,19 @@
 import PageTransition from '../components/PageTransition';
 import Hero from '../sections/Hero';
+import ProjectsGrid from '../sections/ProjectsGrid';
 import About from '../sections/About';
 import Journey from '../sections/Journey';
-import ProjectsGrid from '../sections/ProjectsGrid';
+import Photo from '../sections/Photo';
 import Contact from '../sections/Contact';
 
 export default function Home() {
   return (
     <PageTransition>
       <Hero />
+      <ProjectsGrid />
       <About />
       <Journey />
-      <ProjectsGrid />
+      <Photo />
       <Contact />
     </PageTransition>
   );

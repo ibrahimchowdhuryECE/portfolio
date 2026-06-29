@@ -6,11 +6,11 @@ export default function Journey() {
     <section id="journey" className="section journey">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">The journey</span>
-          <h2 className="section-title">From Waterloo to Madrid.</h2>
+          <span className="eyebrow">Education</span>
+          <h2 className="section-title">Waterloo, and next, Madrid.</h2>
           <p className="lead">
-            Part of being a builder is chasing new environments. Next stop: a semester abroad in
-            Spain — new language, new challenges, same drive to make things.
+            Currently at the University of Waterloo, and heading to UC3M in Madrid on exchange for
+            Fall 2026 — an opportunity to study engineering in a new environment.
           </p>
         </Reveal>
 

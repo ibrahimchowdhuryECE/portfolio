@@ -20,10 +20,10 @@ export default function Contact() {
       <div className="container">
         <Reveal className="contact-card">
           <span className="eyebrow">Contact</span>
-          <h2 className="section-title">Let’s build something.</h2>
+          <h2 className="section-title">Get in touch.</h2>
           <p className="lead contact-lead">
-            Open to co-op, internships, and new-grad opportunities — and always happy to talk shop.
-            The fastest way to reach me is email.
+            I’m open to co-op, internship, and new-grad opportunities. Email is the best way to
+            reach me, and I’m happy to share more about any of my projects.
           </p>
 
           <div className="contact-links">

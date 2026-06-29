@@ -7,8 +7,8 @@ export default function About() {
     <section id="about" className="section about">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">About me</span>
-          <h2 className="section-title">A builder, not just a student.</h2>
+          <span className="eyebrow">About</span>
+          <h2 className="section-title">Background &amp; skills.</h2>
         </Reveal>
 
         <div className="about-grid">

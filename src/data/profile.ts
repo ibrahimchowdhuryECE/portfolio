@@ -4,14 +4,14 @@
 export const profile = {
   name: 'Ibrahim',
   // Short role line shown under your name in the hero
-  role: 'Electrical & Computer Engineering @ University of Waterloo',
+  role: 'Electrical & Computer Engineering · University of Waterloo',
   tagline:
-    'I build hardware and software that ships — from biomedical devices to digital logic. Dedicated, curious, and always making something.',
+    'Engineering student focused on hardware and embedded systems — from a biomedical sensing device to FPGA digital logic.',
 
   // About section narrative
   about: [
-    'I’m a University of Waterloo engineering student and a builder at heart. I like taking hard, real-world problems and turning them into things that actually work — circuits, embedded devices, and the code that drives them.',
-    'Waterloo’s co-op culture rubs off on you: ship early, learn fast, iterate. That mindset shows up in everything I make, whether it’s a biomedical prototype or a state machine on an FPGA.',
+    'I study Electrical & Computer Engineering at the University of Waterloo, where I work across the stack from sensors and circuits to the firmware that runs them.',
+    'My projects tend to start with a concrete problem and end with a working prototype — a non-invasive glucose sensor, a traffic-light controller in VHDL, and more in progress.',
   ],
 
   // Skill groups shown as chips in the About section
@@ -27,13 +27,13 @@ export const profile = {
     {
       place: 'University of Waterloo',
       location: 'Waterloo, Canada',
-      detail: 'Electrical & Computer Engineering — where the building habit took hold.',
-      time: 'Now',
+      detail: 'Electrical & Computer Engineering, with a focus on hardware and embedded systems.',
+      time: 'Current',
     },
     {
       place: 'Universidad Carlos III de Madrid (UC3M)',
       location: 'Madrid, Spain',
-      detail: 'Heading abroad on exchange — new country, new perspective, same drive to build.',
+      detail: 'Studying abroad on exchange — a new academic environment and a chance to broaden my engineering background.',
       time: 'Fall 2026',
     },
   ],

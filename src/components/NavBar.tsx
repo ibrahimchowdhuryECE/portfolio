@@ -4,9 +4,9 @@ import { profile } from '../data/profile';
 import './NavBar.css';
 
 const sections = [
-  { id: 'about', label: 'About' },
-  { id: 'journey', label: 'Journey' },
   { id: 'projects', label: 'Projects' },
+  { id: 'about', label: 'About' },
+  { id: 'journey', label: 'Education' },
   { id: 'contact', label: 'Contact' },
 ];
 

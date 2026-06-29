@@ -6,29 +6,30 @@
    ===================================================================== */
 
 :root {
-  /* Brand / accent */
-  --accent: #2563eb; /* electric blue */
-  --accent-2: #06b6d4; /* cyan */
-  --accent-soft: rgba(37, 99, 235, 0.1);
-  --accent-glow: rgba(37, 99, 235, 0.28);
-  --gradient: linear-gradient(120deg, var(--accent), var(--accent-2));
+  /* Brand / accent — vibrant pops against warm neutrals */
+  --accent: #2b54ff; /* vibrant cobalt blue (primary pop) */
+  --accent-2: #ff5a3c; /* vibrant coral (secondary pop) */
+  --accent-soft: rgba(43, 84, 255, 0.08);
+  --accent-glow: rgba(43, 84, 255, 0.3);
+  --gradient: linear-gradient(120deg, var(--accent), #6d5cff);
+  --gradient-pop: linear-gradient(120deg, var(--accent), var(--accent-2));
 
-  /* Surfaces */
-  --bg: #f7f9fc;
-  --surface: #ffffff;
-  --surface-2: #f1f5f9;
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
+  /* Surfaces — beige / warm white */
+  --bg: #f3eee4; /* warm beige */
+  --surface: #fffdf9; /* warm white */
+  --surface-2: #ece4d6; /* deeper beige */
+  --border: #e3d9c7; /* warm grey-beige */
+  --border-strong: #cabfa9;
 
-  /* Text */
-  --text: #475569; /* body */
-  --text-strong: #0f172a; /* headings */
-  --text-muted: #64748b;
+  /* Text — near-black + warm grey */
+  --text: #4a463d; /* warm grey body */
+  --text-strong: #14110a; /* near-black headings */
+  --text-muted: #8a8276;
 
   /* Effects */
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.18);
-  --shadow-lg: 0 24px 50px -18px rgba(37, 99, 235, 0.28);
+  --shadow-sm: 0 1px 2px rgba(20, 17, 10, 0.05);
+  --shadow: 0 12px 32px -14px rgba(20, 17, 10, 0.2);
+  --shadow-lg: 0 26px 52px -20px rgba(43, 84, 255, 0.3);
   --radius: 16px;
   --radius-sm: 10px;
 
@@ -222,7 +223,7 @@ p {
   font-weight: 500;
   color: var(--accent);
   background: var(--accent-soft);
-  border: 1px solid rgba(37, 99, 235, 0.16);
+  border: 1px solid rgba(43, 84, 255, 0.18);
   padding: 4px 9px;
   border-radius: 6px;
 }

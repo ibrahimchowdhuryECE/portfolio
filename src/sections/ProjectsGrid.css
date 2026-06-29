@@ -1,31 +1,21 @@
-.projects-section {
-  background:
-    linear-gradient(180deg, transparent, rgba(43, 84, 255, 0.04) 40%, transparent);
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.projects-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   gap: 24px;
 }
 
-/* the Reveal wrapper around each card should stretch so cards match height */
-.project-grid > * {
-  display: flex;
+.projects-count {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  white-space: nowrap;
+  padding-bottom: 6px;
 }
 
-.project-grid > * > * {
-  width: 100%;
-}
-
-@media (max-width: 900px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
+/* closing hairline under the last row so the index reads as a table */
+.project-index {
+  border-bottom: 1px solid var(--line);
 }

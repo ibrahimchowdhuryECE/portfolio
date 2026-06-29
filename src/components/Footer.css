@@ -1,7 +1,7 @@
 .footer {
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-  padding-block: 28px;
+  border-top: 1px solid var(--ink);
+  background: var(--paper);
+  padding-block: 30px;
 }
 
 .footer-inner {
@@ -15,25 +15,32 @@
 .footer-name {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  color: var(--text-strong);
+  gap: 10px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
 }
 
 .footer-mark {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+  border-radius: 1px;
 }
 
 .footer-meta {
-  font-size: 14px;
-  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--pewter);
 }
 
 .footer-link {
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
 }
 
 @media (max-width: 560px) {

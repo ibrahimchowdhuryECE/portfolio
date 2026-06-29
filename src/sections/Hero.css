@@ -1,65 +1,86 @@
 .hero {
-  padding-top: clamp(40px, 6vw, 72px);
+  padding-top: clamp(48px, 8vw, 96px);
+  padding-bottom: 0;
+}
+
+.hero-inner {
   padding-bottom: clamp(40px, 6vw, 72px);
 }
 
-.hero-text {
-  max-width: 760px;
-}
-
-.hero-badge {
-  display: inline-flex;
+/* mono instrument header line */
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-strong);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 7px 14px;
-  box-shadow: var(--shadow-sm);
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
 }
 
-.hero-badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+.hero-meta-coord {
+  color: var(--ink);
 }
 
 .hero-name {
-  font-size: clamp(40px, 8vw, 76px);
-  line-height: 1.04;
-  margin-top: 22px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(56px, 13vw, 150px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-top: clamp(28px, 5vw, 56px);
 }
 
-.hero-gradient {
-  background: var(--gradient-pop);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-role {
+.hero-readout {
   font-family: var(--mono);
-  font-size: clamp(14px, 2vw, 16px);
-  color: var(--accent);
-  margin-top: 18px;
+  font-size: clamp(13px, 1.6vw, 15px);
+  letter-spacing: 0.04em;
+  color: var(--graphite);
+  margin-top: 26px;
 }
 
 .hero-tagline {
-  margin-top: 16px;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 23px);
+  line-height: 1.55;
+  color: var(--graphite);
+  max-width: 54ch;
+  margin-top: 18px;
 }
 
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 30px;
+  margin-top: 34px;
 }
 
-.hero-media {
-  margin-top: clamp(36px, 6vw, 60px);
+/* full-bleed signature trace under the hero text */
+.hero-signal {
+  position: relative;
+  width: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(16px, 3vw, 32px);
+  background: var(--panel);
+}
+
+.hero-signal .signal {
+  height: clamp(90px, 14vw, 170px);
+}
+
+.hero-signal-label {
+  position: absolute;
+  right: 32px;
+  bottom: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pewter);
 }

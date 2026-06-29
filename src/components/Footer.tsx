@@ -6,11 +6,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <span className="footer-name">
-          <span className="footer-mark">{'</>'}</span> {profile.name}
+          <span className="footer-mark" aria-hidden="true" /> Ibrahim Chowdhury
         </span>
-        <span className="footer-meta">
-          Built with React + TypeScript · {profile.role.split('@')[1]?.trim() || 'Waterloo'}
-        </span>
+        <span className="footer-meta">Built with React + TypeScript · Waterloo, ON</span>
         <a className="footer-link" href={`mailto:${profile.contact.email}`}>
           {profile.contact.email}
         </a>

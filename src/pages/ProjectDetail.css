@@ -45,22 +45,20 @@
 /* ---------- Coles-Notes summary card ---------- */
 .coles-card {
   position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
+  background: var(--panel);
+  border: 1px solid var(--ink);
   border-radius: var(--radius);
   padding: clamp(24px, 4vw, 36px);
-  box-shadow: var(--shadow);
   margin-bottom: 48px;
 }
 
 .coles-label {
   font-family: var(--mono);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--pewter);
 }
 
 .coles-grid {
@@ -81,7 +79,10 @@
 }
 
 .coles-item-value {
-  font-size: 15px;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--graphite);
 }
 
 /* ---------- In-depth body ---------- */
@@ -92,14 +93,20 @@
 }
 
 .detail-section-title {
-  font-size: clamp(20px, 3vw, 26px);
-  margin-bottom: 10px;
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 27px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
   padding-left: 14px;
-  border-left: 3px solid var(--accent);
+  border-left: 2px solid var(--ink);
 }
 
 .detail-section-body {
-  font-size: 16px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--graphite);
 }
 
 .detail-bottom-cta {

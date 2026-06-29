@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { profile } from '../data/profile';
 import './NavBar.css';
 
 const sections = [
@@ -40,8 +39,8 @@ export default function NavBar() {
     <header className="nav">
       <div className="nav-inner container">
         <Link to="/" className="nav-logo" onClick={goHome}>
-          <span className="nav-logo-mark">{'</>'}</span>
-          {profile.name}
+          <span className="nav-logo-mark" aria-hidden="true" />
+          Ibrahim Chowdhury
         </Link>
 
         <button

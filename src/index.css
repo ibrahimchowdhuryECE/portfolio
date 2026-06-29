@@ -1,50 +1,61 @@
 /* =====================================================================
-   Global theme — light + techy
-   This file holds the design "tokens" (colors, fonts, spacing) and the
-   shared, reusable styles. Tweak the variables in :root to restyle the
-   whole site at once.
+   Global theme — "engineering instrument sheet"
+   Monochrome only: off-white paper, ink black, greys. No color.
+   Type: Space Grotesk (display) · Newsreader (serif prose) · JetBrains Mono (data)
    ===================================================================== */
 
 :root {
-  /* Brand / accent — vibrant pops against warm neutrals */
-  --accent: #2b54ff; /* vibrant cobalt blue (primary pop) */
-  --accent-2: #ff5a3c; /* vibrant coral (secondary pop) */
-  --accent-soft: rgba(43, 84, 255, 0.08);
-  --accent-glow: rgba(43, 84, 255, 0.3);
-  --gradient: linear-gradient(120deg, var(--accent), #6d5cff);
-  --gradient-pop: linear-gradient(120deg, var(--accent), var(--accent-2));
+  /* Monochrome palette — the ONLY colors in the project */
+  --paper: #f3f2ee; /* off-white background */
+  --panel: #fbfaf7; /* near-white surfaces */
+  --panel-2: #ebe9e2; /* recessed surfaces */
+  --ink: #14130f; /* near-black */
+  --graphite: #34322c; /* body text */
+  --pewter: #6b6860; /* muted captions */
+  --line: #d7d4cb; /* hairline rules */
+  --line-strong: #bdb9ad;
 
-  /* Surfaces — beige / warm white */
-  --bg: #f3eee4; /* warm beige */
-  --surface: #fffdf9; /* warm white */
-  --surface-2: #ece4d6; /* deeper beige */
-  --border: #e3d9c7; /* warm grey-beige */
-  --border-strong: #cabfa9;
+  /* Legacy aliases kept monochrome so older rules stay neutral */
+  --accent: var(--ink);
+  --accent-2: var(--graphite);
+  --accent-soft: rgba(20, 19, 15, 0.06);
+  --accent-glow: rgba(20, 19, 15, 0.16);
+  --gradient: var(--ink);
+  --gradient-pop: var(--ink);
 
-  /* Text — near-black + warm grey */
-  --text: #4a463d; /* warm grey body */
-  --text-strong: #14110a; /* near-black headings */
-  --text-muted: #8a8276;
+  /* Surfaces / borders (legacy aliases) */
+  --bg: var(--paper);
+  --surface: var(--panel);
+  --surface-2: var(--panel-2);
+  --border: var(--line);
+  --border-strong: var(--line-strong);
 
-  /* Effects */
-  --shadow-sm: 0 1px 2px rgba(20, 17, 10, 0.05);
-  --shadow: 0 12px 32px -14px rgba(20, 17, 10, 0.2);
-  --shadow-lg: 0 26px 52px -20px rgba(43, 84, 255, 0.3);
-  --radius: 16px;
-  --radius-sm: 10px;
+  /* Text (legacy aliases) */
+  --text: var(--graphite);
+  --text-strong: var(--ink);
+  --text-muted: var(--pewter);
+
+  /* Effects — restrained, near-shadowless for a printed-sheet feel */
+  --shadow-sm: 0 1px 0 rgba(20, 19, 15, 0.04);
+  --shadow: 0 18px 40px -28px rgba(20, 19, 15, 0.3);
+  --shadow-lg: 0 28px 60px -34px rgba(20, 19, 15, 0.4);
+  --radius: 2px;
+  --radius-sm: 2px;
 
   /* Typography */
-  --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
   --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --sans: var(--display); /* legacy alias */
 
   /* Layout */
-  --maxw: 1120px;
-  --nav-h: 68px;
+  --maxw: 1180px;
+  --nav-h: 70px;
 
   color-scheme: light;
-  font-family: var(--sans);
-  color: var(--text);
-  background: var(--bg);
+  font-family: var(--serif);
+  color: var(--graphite);
+  background: var(--paper);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -60,30 +71,29 @@
 
 html {
   scroll-behavior: smooth;
-  /* offset anchored sections so the sticky nav doesn't cover headings */
   scroll-padding-top: calc(var(--nav-h) + 16px);
 }
 
 body {
   margin: 0;
   min-height: 100svh;
-  background: var(--bg);
+  background: var(--paper);
   position: relative;
   overflow-x: hidden;
 }
 
-/* subtle tech grid in the background */
+/* faint graph-paper baseline — subtle, monochrome, top-anchored */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.35;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 100%);
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 90% 55% at 50% 0%, #000 25%, transparent 100%);
 }
 
 img {
@@ -92,23 +102,24 @@ img {
 }
 
 a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration: none;
 }
 
 h1,
 h2,
 h3 {
-  color: var(--text-strong);
-  line-height: 1.1;
+  font-family: var(--display);
+  color: var(--ink);
+  line-height: 1.04;
   margin: 0;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 p {
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* ---------- Layout helpers ---------- */
@@ -116,116 +127,108 @@ p {
   width: 100%;
   max-width: var(--maxw);
   margin-inline: auto;
-  padding-inline: 24px;
+  padding-inline: 32px;
 }
 
 .section {
-  padding-block: clamp(56px, 9vw, 110px);
+  padding-block: clamp(60px, 9vw, 120px);
   scroll-margin-top: var(--nav-h);
 }
 
 .section-head {
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
+/* mono eyebrow — an instrument label */
 .eyebrow {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--pewter);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .eyebrow::before {
   content: '';
-  width: 22px;
-  height: 2px;
-  background: var(--gradient);
-  border-radius: 2px;
+  width: 26px;
+  height: 1px;
+  background: var(--ink);
 }
 
 .section-title {
-  font-size: clamp(28px, 4.5vw, 44px);
-  margin-top: 14px;
+  font-family: var(--display);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin-top: 18px;
+  color: var(--ink);
 }
 
 .lead {
-  font-size: clamp(16px, 2vw, 19px);
-  max-width: 62ch;
-  margin-top: 14px;
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.6;
+  color: var(--graphite);
+  max-width: 60ch;
+  margin-top: 18px;
 }
 
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 12px 22px;
-  border-radius: 999px;
-  border: 1px solid transparent;
+  gap: 9px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 13px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink);
   cursor: pointer;
   transition:
     transform 0.18s ease,
-    box-shadow 0.18s ease,
     background 0.18s ease,
     color 0.18s ease;
   white-space: nowrap;
 }
 
 .btn-primary {
-  background: var(--gradient);
-  color: #fff;
-  box-shadow: 0 10px 24px -10px var(--accent-glow);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px -10px var(--accent-glow);
 }
 
 .btn-ghost {
-  background: var(--surface);
-  color: var(--text-strong);
-  border-color: var(--border-strong);
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
 }
 
 .btn-ghost:hover {
+  border-color: var(--ink);
   transform: translateY(-2px);
-  border-color: var(--accent);
-  color: var(--accent);
 }
 
-/* ---------- Chips / tags ---------- */
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-strong);
-  box-shadow: var(--shadow-sm);
-}
-
+/* ---------- Tags / chips (mono, hairline) ---------- */
 .tag {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid rgba(43, 84, 255, 0.18);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  border: 1px solid var(--line);
   padding: 4px 9px;
-  border-radius: 6px;
+  border-radius: var(--radius);
 }
 
 .tag-row {
@@ -234,15 +237,33 @@ p {
   gap: 8px;
 }
 
-/* ---------- Generic card ---------- */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--graphite);
+  border: 1px solid var(--line);
+  padding: 7px 13px;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  background: var(--panel);
 }
 
-/* ---------- Accessibility: respect reduced motion ---------- */
+/* generic card */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* hairline rule, optionally with the signal-trace baseline feel */
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+}
+
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

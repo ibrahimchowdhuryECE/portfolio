@@ -15,12 +15,9 @@
 .notfound-code {
   font-family: var(--mono);
   font-size: clamp(64px, 16vw, 140px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--ink);
 }
 
 .notfound-title {

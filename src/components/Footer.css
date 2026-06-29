@@ -1,0 +1,44 @@
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding-block: 28px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.footer-mark {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.footer-meta {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.footer-link {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 560px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

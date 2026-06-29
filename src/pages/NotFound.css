@@ -1,0 +1,32 @@
+.notfound {
+  min-height: calc(100svh - var(--nav-h));
+  display: grid;
+  place-items: center;
+}
+
+.notfound-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.notfound-code {
+  font-family: var(--mono);
+  font-size: clamp(64px, 16vw, 140px);
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.notfound-title {
+  font-size: clamp(24px, 4vw, 36px);
+}
+
+.notfound .btn {
+  margin-top: 12px;
+}

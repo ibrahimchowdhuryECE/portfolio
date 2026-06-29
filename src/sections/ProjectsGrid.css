@@ -1,0 +1,31 @@
+.projects-section {
+  background:
+    linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.03) 40%, transparent);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* the Reveal wrapper around each card should stretch so cards match height */
+.project-grid > * {
+  display: flex;
+}
+
+.project-grid > * > * {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}

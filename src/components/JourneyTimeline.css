@@ -1,0 +1,109 @@
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  padding-top: 40px;
+}
+
+/* horizontal connecting line behind the dots */
+.timeline-line {
+  position: absolute;
+  top: 13px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: var(--gradient);
+  opacity: 0.5;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.timeline-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  box-shadow: 0 0 0 6px var(--accent-soft);
+}
+
+.timeline-dot-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gradient);
+}
+
+.timeline-card {
+  padding: 22px;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.timeline-time {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.timeline-place {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.timeline-location {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.timeline-detail {
+  font-size: 15px;
+  margin-top: 12px;
+}
+
+/* ---------- Mobile: stack vertically ---------- */
+@media (max-width: 720px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-left: 8px;
+  }
+
+  .timeline-line {
+    top: 0;
+    bottom: 0;
+    left: 21px;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+
+  .timeline-item {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 18px;
+  }
+
+  .timeline-dot {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+}

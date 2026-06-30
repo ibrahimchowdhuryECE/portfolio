@@ -1,0 +1,28 @@
+.signal {
+  width: 100%;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  padding-block: clamp(16px, 3vw, 32px);
+}
+
+.signal-svg {
+  display: block;
+  width: 100%;
+  height: clamp(90px, 14vw, 170px);
+  overflow: visible;
+}
+
+.signal-base {
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.signal-path {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}

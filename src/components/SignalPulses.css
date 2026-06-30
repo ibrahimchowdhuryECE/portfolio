@@ -1,29 +1,65 @@
 .pulses {
+  position: relative;
   width: 100%;
+  height: clamp(120px, 18vw, 200px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--panel);
-  padding-block: clamp(16px, 3vw, 32px);
+  overflow: hidden;
 }
 
-.pulses-svg {
+/* the steady grey baseline */
+.pulses-base {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--line);
+}
+
+/* the traveling waveform packet */
+.pulse {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(220px, 30vw, 420px);
+  will-change: transform;
+  animation: pulse-travel 7s linear infinite;
+}
+
+.pulse-svg {
   display: block;
   width: 100%;
-  height: clamp(90px, 14vw, 170px);
-  overflow: hidden; /* clip pulses at the band edges as they enter/exit */
+  height: 100%;
 }
 
-.pulses-base {
-  stroke: var(--line);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.pulses-path {
+.pulse-path {
   fill: none;
   stroke: var(--ink);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
+}
+
+/* travel across in the first ~60% of the cycle, then sit off-screen (the gap) */
+@keyframes pulse-travel {
+  0% {
+    transform: translateX(-110%);
+  }
+  60% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+    transform: translateX(38vw);
+  }
 }

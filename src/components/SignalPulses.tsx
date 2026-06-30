@@ -2,65 +2,43 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './SignalPulses.css';
 
-// Four distinct ~300-unit-wide waveform pulses (baseline at y=70).
-const SHAPES = [
-  // ECG / heartbeat spike
-  'M0 70 L120 70 L132 64 L140 92 L150 24 L160 104 L170 66 L182 70 L300 70',
-  // sine burst
-  'M0 70 Q 37.5 30 75 70 T 150 70 T 225 70 L300 70',
-  // square / digital pulse
-  'M0 70 L110 70 L110 40 L160 40 L160 100 L210 100 L210 70 L300 70',
-  // breath / gaussian bump
-  'M0 70 C 110 70 120 22 150 22 C 180 22 190 70 300 70',
-];
+// The original biosignal waveform, full band width (baseline at y=70).
+const SIGNAL_PATH =
+  'M0 70 L110 70 C 168 70 178 30 236 30 C 294 30 304 70 360 70 L424 70 ' +
+  'C 470 70 486 70 512 70 C 528 70 534 18 548 18 C 560 18 566 116 582 116 ' +
+  'C 596 116 604 70 648 70 L742 70 C 800 70 812 40 872 40 C 932 40 942 70 1002 70 ' +
+  'L1066 70 C 1116 70 1126 96 1162 72 L1200 70';
+
+// Seconds for one waveform width to travel across — higher = slower.
+const DURATION = 16;
 
 /**
- * A live oscilloscope band: a waveform pulse travels left-to-right across the
- * screen, then after a short gap the next (randomly chosen, never repeating)
- * waveform type is sent. Purely time-based — independent of scroll.
+ * A constantly looping waveform that drifts slowly across the band. Two tiled
+ * copies translate seamlessly so the loop has no seam. Time-based, no scroll.
  */
 export default function SignalPulses() {
   const groupRef = useRef<SVGGElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     const group = groupRef.current;
-    const path = pathRef.current;
-    if (!group || !path) return;
+    if (!group) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    let last = -1;
-    let tween: gsap.core.Tween | null = null;
-    let delayed: gsap.core.Tween | null = null;
-    const state = { x: -320 };
-
-    const sendPulse = () => {
-      // random shape, never the same twice in a row
-      let i = Math.floor(Math.random() * SHAPES.length);
-      if (i === last) i = (i + 1) % SHAPES.length;
-      last = i;
-      path.setAttribute('d', SHAPES[i]);
-
-      tween = gsap.fromTo(
-        state,
-        { x: -320 },
-        {
-          x: 1220,
-          duration: 2.2,
-          ease: 'none',
-          onUpdate: () => group.setAttribute('transform', `translate(${state.x}, 0)`),
-          onComplete: () => {
-            delayed = gsap.delayedCall(0.65, sendPulse);
-          },
-        },
-      );
-    };
-
-    sendPulse();
+    const state = { x: -1200 };
+    const tween = gsap.fromTo(
+      state,
+      { x: -1200 },
+      {
+        x: 0,
+        duration: DURATION,
+        ease: 'none',
+        repeat: -1,
+        onUpdate: () => group.setAttribute('transform', `translate(${state.x}, 0)`),
+      },
+    );
 
     return () => {
-      tween?.kill();
-      delayed?.kill();
+      tween.kill();
     };
   }, []);
 
@@ -69,7 +47,8 @@ export default function SignalPulses() {
       <svg className="pulses-svg" viewBox="0 0 1200 140" fill="none" preserveAspectRatio="none">
         <line className="pulses-base" x1="0" y1="70" x2="1200" y2="70" />
         <g ref={groupRef}>
-          <path ref={pathRef} className="pulses-path" d={SHAPES[0]} />
+          <path className="pulses-path" d={SIGNAL_PATH} />
+          <path className="pulses-path" d={SIGNAL_PATH} transform="translate(1200, 0)" />
         </g>
       </svg>
     </div>

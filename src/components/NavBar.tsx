@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { getLenis } from '../lib/smoothScroll';
 import './NavBar.css';
 
 const sections = [
@@ -16,14 +15,11 @@ export default function NavBar() {
   const navigate = useNavigate();
 
   // Navigate to a home-page section. If we're already on the home page,
-  // smooth-scroll directly (via Lenis); otherwise route home first.
+  // smooth-scroll directly; otherwise route home first (ScrollManager scrolls).
   const goToSection = (id: string) => {
     setOpen(false);
     if (location.pathname === '/') {
-      const lenis = getLenis();
-      const el = document.getElementById(id);
-      if (lenis && el) lenis.scrollTo(el, { offset: -70 });
-      else el?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       window.history.replaceState(null, '', `/#${id}`);
     } else {
       navigate(`/#${id}`);
@@ -33,9 +29,7 @@ export default function NavBar() {
   const goHome = () => {
     setOpen(false);
     if (location.pathname === '/') {
-      const lenis = getLenis();
-      if (lenis) lenis.scrollTo(0);
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       navigate('/');
     }

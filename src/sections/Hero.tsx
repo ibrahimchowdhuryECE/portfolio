@@ -1,9 +1,17 @@
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { profile } from '../data/profile';
 import MediaSlot from '../components/MediaSlot';
 import Marquee from '../components/Marquee';
 import './Hero.css';
+
+// Biosignal waveform, stretched edge-to-edge (length scales with the window).
+const SIGNAL_PATH =
+  'M0 70 L110 70 C 168 70 178 30 236 30 C 294 30 304 70 360 70 L424 70 ' +
+  'C 470 70 486 70 512 70 C 528 70 534 18 548 18 C 560 18 566 116 582 116 ' +
+  'C 596 116 604 70 648 70 L742 70 C 800 70 812 40 872 40 C 932 40 942 70 1002 70 ' +
+  'L1066 70 C 1116 70 1126 96 1162 72 L1200 70';
 
 const container: Variants = {
   hidden: {},
@@ -16,8 +24,23 @@ const item: Variants = {
 };
 
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  // Scroll progress across the hero: 0 at the top, 1 once the hero has scrolled
+  // out (i.e. Projects has arrived). The signal draws in step with this.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+
+  // `drawn` tracks scroll directly: scrolling down draws the line, scrolling up
+  // unwinds it. It hits a full line at ~80% of the hero scroll (and clamps to 1
+  // after) so it always reaches the end before Projects.
+  const drawn = useTransform(scrollYProgress, [0, 0.8], [0.04, 1]);
+
   return (
-    <section id="top" className="hero">
+    <section id="top" className="hero" ref={ref}>
       <div className="container hero-inner">
         <motion.div className="hero-text" variants={container} initial="hidden" animate="show">
           <motion.div className="hero-meta" variants={item}>
@@ -60,6 +83,23 @@ export default function Hero() {
       </div>
 
       <Marquee />
+
+      <div className="hero-signal" aria-hidden="true">
+        <svg
+          className="hero-signal-svg"
+          viewBox="0 0 1200 140"
+          fill="none"
+          preserveAspectRatio="none"
+        >
+          <line className="hero-signal-base" x1="0" y1="70" x2="1200" y2="70" />
+          <motion.path
+            className="hero-signal-path"
+            d={SIGNAL_PATH}
+            style={{ pathLength: reduce ? 1 : drawn }}
+          />
+        </svg>
+        <span className="hero-signal-label">breath glucose · sensing signal</span>
+      </div>
     </section>
   );
 }

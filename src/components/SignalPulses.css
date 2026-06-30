@@ -1,41 +1,30 @@
 .pulses {
   position: relative;
   width: 100%;
-  height: clamp(120px, 18vw, 200px);
+  height: clamp(120px, 17vw, 190px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--panel);
   overflow: hidden;
 }
 
-/* the steady grey baseline */
-.pulses-base {
+/* two tiles side by side; the whole track scrolls left and loops seamlessly */
+.ecg-track {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background: var(--line);
-}
-
-/* the traveling waveform packet */
-.pulse {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: clamp(220px, 30vw, 420px);
+  inset: 0;
+  width: 200%;
+  display: flex;
   will-change: transform;
-  animation: pulse-travel 7s linear infinite;
+  animation: ecg-scroll 4.5s linear infinite;
 }
 
-.pulse-svg {
-  display: block;
-  width: 100%;
+.ecg-tile {
+  width: 50%;
   height: 100%;
+  display: block;
 }
 
-.pulse-path {
+.ecg-line {
   fill: none;
   stroke: var(--ink);
   stroke-width: 2;
@@ -44,22 +33,17 @@
   vector-effect: non-scaling-stroke;
 }
 
-/* travel across in the first ~60% of the cycle, then sit off-screen (the gap) */
-@keyframes pulse-travel {
-  0% {
-    transform: translateX(-110%);
+@keyframes ecg-scroll {
+  from {
+    transform: translateX(0);
   }
-  60% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(100vw);
+  to {
+    transform: translateX(-50%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulse {
+  .ecg-track {
     animation: none;
-    transform: translateX(38vw);
   }
 }

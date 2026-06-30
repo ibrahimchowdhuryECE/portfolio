@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { profile } from '../data/profile';
 import MediaSlot from '../components/MediaSlot';
@@ -24,23 +23,10 @@ const item: Variants = {
 };
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
-  // Scroll progress across the hero: 0 at the top, 1 once the hero has scrolled
-  // out (i.e. Projects has arrived). The signal draws in step with this.
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
-
-  // `drawn` tracks scroll directly: scrolling down draws the line, scrolling up
-  // unwinds it. It hits a full line at ~80% of the hero scroll (and clamps to 1
-  // after) so it always reaches the end before Projects.
-  const drawn = useTransform(scrollYProgress, [0, 0.8], [0.04, 1]);
-
   return (
-    <section id="top" className="hero" ref={ref}>
+    <section id="top" className="hero">
       <div className="container hero-inner">
         <motion.div className="hero-text" variants={container} initial="hidden" animate="show">
           <motion.div className="hero-meta" variants={item}>
@@ -95,7 +81,9 @@ export default function Hero() {
           <motion.path
             className="hero-signal-path"
             d={SIGNAL_PATH}
-            style={{ pathLength: reduce ? 1 : drawn }}
+            initial={{ pathLength: reduce ? 1 : 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: reduce ? 0 : 1.1, ease: 'easeInOut', delay: 0.5 }}
           />
         </svg>
         <span className="hero-signal-label">breath glucose · sensing signal</span>

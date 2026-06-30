@@ -3,7 +3,7 @@ import type { Variants } from 'motion/react';
 import { profile } from '../data/profile';
 import MediaSlot from '../components/MediaSlot';
 import Marquee from '../components/Marquee';
-import SignalScroll from '../components/SignalScroll';
+import SignalPulses from '../components/SignalPulses';
 import './Hero.css';
 
 const container: Variants = {
@@ -62,7 +62,7 @@ export default function Hero() {
 
       <Marquee />
 
-      <SignalScroll />
+      <SignalPulses />
     </section>
   );
 }

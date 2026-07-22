@@ -4,6 +4,7 @@ import { profile } from '../data/profile';
 import MediaSlot from '../components/MediaSlot';
 import Marquee from '../components/Marquee';
 import SignalPulses from '../components/SignalPulses';
+import Typewriter from '../components/Typewriter';
 import './Hero.css';
 
 const container: Variants = {
@@ -21,15 +22,8 @@ export default function Hero() {
     <section id="top" className="hero">
       <div className="container hero-inner">
         <motion.div className="hero-text" variants={container} initial="hidden" animate="show">
-          <motion.div className="hero-meta" variants={item}>
-            <span>Portfolio</span>
-            <span className="hero-meta-coord">43.47°N 80.52°W → 40.42°N 3.70°W</span>
-          </motion.div>
-
           <motion.h1 className="hero-name" variants={item}>
-            Ibrahim
-            <br />
-            Chowdhury
+            <Typewriter text={'Ibrahim\nChowdhury'} />
           </motion.h1>
 
           <motion.p className="hero-readout" variants={item}>

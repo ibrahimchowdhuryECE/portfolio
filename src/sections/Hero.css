@@ -32,12 +32,15 @@
 
 .hero-name {
   font-family: var(--display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: clamp(52px, 9vw, 108px);
   line-height: 0.92;
   letter-spacing: -0.04em;
   color: var(--ink);
   margin-top: clamp(26px, 4vw, 48px);
+  white-space: pre-line; /* honours the "\n" between first and last name */
+  /* reserve two lines so typing doesn't shift the layout below */
+  min-height: 1.84em;
 }
 
 .hero-readout {

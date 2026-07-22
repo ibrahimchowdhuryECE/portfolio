@@ -9,7 +9,6 @@ export default function Contact() {
     <section id="contact" className="section contact">
       <div className="container">
         <Reveal className="contact-card">
-          <span className="eyebrow">Contact</span>
           <h2 className="section-title">Get in touch.</h2>
           <p className="lead contact-lead">
             I’m open to co-op, internship, and new-grad opportunities, and happy to share more about

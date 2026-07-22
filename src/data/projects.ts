@@ -46,7 +46,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'vhdl-traffic-controller',
-    title: '4-Way Traffic Light Controller (VHDL)',
+    title: '4-Way Traffic Light Controller',
     blurb:
       'A finite-state-machine intersection controller written in VHDL and deployed to an FPGA.',
     tags: ['VHDL', 'FPGA', 'Digital Logic', 'FSM'],

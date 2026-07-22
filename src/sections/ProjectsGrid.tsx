@@ -9,7 +9,6 @@ export default function ProjectsGrid() {
       <div className="container">
         <Reveal className="section-head projects-head">
           <div>
-            <span className="eyebrow">Selected work</span>
             <h2 className="section-title">Projects.</h2>
           </div>
           <span className="projects-count">{projects.length} entries</span>

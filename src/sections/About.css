@@ -35,6 +35,49 @@
   margin-top: 18px;
 }
 
+/* award callout — clear, clickable, urges a visit to the announcement */
+.about-award {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 12px 16px;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--moss);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--ink);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.about-award:hover {
+  transform: translateY(-2px);
+  border-color: var(--moss);
+  background: var(--accent-glow);
+}
+
+.about-award-icon {
+  color: var(--moss);
+  flex-shrink: 0;
+}
+
+.about-award-text {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--graphite);
+}
+
+.about-award-cta {
+  display: block;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--forest);
+}
+
 /* skills spec sheet */
 .about-spec-head {
   display: block;

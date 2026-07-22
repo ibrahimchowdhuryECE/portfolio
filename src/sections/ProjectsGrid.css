@@ -15,7 +15,24 @@
   padding-bottom: 6px;
 }
 
-/* closing hairline under the last row so the index reads as a table */
+/* card grid — title + skill bubbles per project, each links to its page */
 .project-index {
-  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* let each Reveal wrapper stretch so its card fills the grid cell evenly */
+.project-index > * {
+  display: flex;
+}
+
+.project-index > * > .pcard {
+  width: 100%;
+}
+
+@media (max-width: 680px) {
+  .project-index {
+    grid-template-columns: 1fr;
+  }
 }

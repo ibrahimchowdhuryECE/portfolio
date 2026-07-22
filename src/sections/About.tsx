@@ -8,14 +8,13 @@ export default function About() {
     <section id="about" className="section about">
       <div className="container">
         <Reveal className="section-head">
-          <span className="eyebrow">About</span>
           <h2 className="section-title">Background.</h2>
         </Reveal>
 
         <div className="about-grid">
           <Reveal className="about-portrait">
             <HeadshotPlaceholder />
-            <span className="about-portrait-cap">Ibrahim Chowdhury — Waterloo, ON</span>
+            <span className="about-portrait-cap">Ibrahim Chowdhury · Waterloo, ON</span>
           </Reveal>
 
           <Reveal className="about-text" delay={0.08}>
@@ -24,6 +23,34 @@ export default function About() {
                 {para}
               </p>
             ))}
+
+            <a
+              className="about-award"
+              href={profile.award.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                className="about-award-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 4h12v3a6 6 0 0 1-12 0V4Zm0 1H3v2a3 3 0 0 0 3 3m12-5h3v2a3 3 0 0 1-3 3m-6 5v3m-3 3h6l-.6-3H9.6L9 20Z"
+                />
+              </svg>
+              <span className="about-award-text">
+                {profile.award.label}
+                <span className="about-award-cta">See the award&nbsp;↗</span>
+              </span>
+            </a>
           </Reveal>
         </div>
 

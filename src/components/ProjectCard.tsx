@@ -4,35 +4,36 @@ import MediaSlot from './MediaSlot';
 import './ProjectCard.css';
 
 /**
- * A single row in the project index — reads like an engineer's catalog entry,
- * with an icon/image slot you can fill with a render, photo, or icon later.
+ * A project card: a cover image, the title, and its key skills as bubbles. The
+ * whole card links to the project's page. No description — title and skills carry it.
  */
 export default function ProjectCard({ project }: { project: Project }) {
   const category = project.tags[0] ?? 'Project';
   const code = category.slice(0, 3).toUpperCase();
+  const skills = project.tags.slice(1);
 
   return (
-    <Link to={`/projects/${project.slug}`} className="prow">
-      <div className="prow-thumb">
-        <MediaSlot src={project.thumbnail} ratio="square" label={code} />
+    <Link to={`/projects/${project.slug}`} className="pcard">
+      <div className="pcard-media">
+        <MediaSlot src={project.thumbnail} ratio="video" label={code} />
       </div>
 
-      <div className="prow-main">
-        <span className="prow-cat">[{category}]</span>
-        <h3 className="prow-title">{project.title}</h3>
-        <p className="prow-blurb">{project.blurb}</p>
-        <div className="prow-tags tag-row">
-          {project.tags.map((t) => (
-            <span key={t} className="tag">
-              {t}
+      <div className="pcard-body">
+        <span className="pcard-cat">{category}</span>
+        <h3 className="pcard-title">{project.title}</h3>
+
+        <div className="pcard-skills">
+          {skills.map((s) => (
+            <span key={s} className="bubble">
+              {s}
             </span>
           ))}
         </div>
-      </div>
 
-      <span className="prow-arrow" aria-hidden="true">
-        →
-      </span>
+        <span className="pcard-arrow" aria-hidden="true">
+          →
+        </span>
+      </div>
     </Link>
   );
 }

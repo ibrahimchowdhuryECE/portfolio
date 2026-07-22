@@ -1,27 +1,30 @@
 /* =====================================================================
-   Global theme — "engineering instrument sheet"
-   Monochrome only: off-white paper, ink black, greys. No color.
-   Type: Space Grotesk (display) · Newsreader (serif prose) · JetBrains Mono (data)
+   Global theme — "engineering instrument sheet", warm + faded
+   Beige paper, washed warm-black ink, dull olive + deep forest green accent.
+   Type: Big Shoulders Display (display) · Hanken Grotesk (prose) · IBM Plex Mono (data)
    ===================================================================== */
 
 :root {
-  /* Monochrome palette — the ONLY colors in the project */
-  --paper: #f3f2ee; /* off-white background */
-  --panel: #fbfaf7; /* near-white surfaces */
-  --panel-2: #ebe9e2; /* recessed surfaces */
-  --ink: #14130f; /* near-black */
-  --graphite: #34322c; /* body text */
-  --pewter: #6b6860; /* muted captions */
-  --line: #d7d4cb; /* hairline rules */
-  --line-strong: #bdb9ad;
+  /* Warm, faded palette */
+  --paper: #ece4d4; /* warm beige background */
+  --panel: #f4efe2; /* near-white warm surfaces */
+  --panel-2: #e1d8c5; /* recessed surfaces */
+  --ink: #2a2620; /* washed warm-black */
+  --graphite: #4c463c; /* body text */
+  --pewter: #857e70; /* muted captions */
+  --line: #d6cdba; /* hairline rules */
+  --line-strong: #bdb29a;
 
-  /* Legacy aliases kept monochrome so older rules stay neutral */
-  --accent: var(--ink);
-  --accent-2: var(--graphite);
-  --accent-soft: rgba(20, 19, 15, 0.06);
-  --accent-glow: rgba(20, 19, 15, 0.16);
-  --gradient: var(--ink);
-  --gradient-pop: var(--ink);
+  /* Muted accents — dull olive (primary) and deep forest green */
+  --moss: #6a7550; /* dull olive-green */
+  --forest: #4a5738; /* deep muted forest */
+
+  --accent: var(--moss);
+  --accent-2: var(--forest);
+  --accent-soft: rgba(106, 117, 80, 0.1);
+  --accent-glow: rgba(106, 117, 80, 0.22);
+  --gradient: var(--moss);
+  --gradient-pop: var(--forest);
 
   /* Surfaces / borders (legacy aliases) */
   --bg: var(--paper);
@@ -43,14 +46,15 @@
   --radius-sm: 2px;
 
   /* Typography */
-  --display: 'Space Grotesk', system-ui, sans-serif;
-  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
-  --sans: var(--display); /* legacy alias */
+  --display: 'Big Shoulders Display', system-ui, sans-serif;
+  --serif: 'Hanken Grotesk', system-ui, sans-serif; /* body prose (now grotesque) */
+  --mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+  --sans: var(--serif); /* legacy alias -> body face */
 
   /* Layout */
   --maxw: 1180px;
   --nav-h: 70px;
+  --section-pad: clamp(36px, 5.5vw, 72px); /* top/bottom padding on .section */
 
   color-scheme: light;
   font-family: var(--serif);
@@ -131,8 +135,11 @@ p {
 }
 
 .section {
-  padding-block: clamp(60px, 9vw, 120px);
-  scroll-margin-top: var(--nav-h);
+  padding-block: var(--section-pad);
+  /* Cancel the section's own top padding so a nav jump lands the heading just
+     under the sticky nav (scroll-padding-top) with a small clearance, instead
+     of leaving the whole top padding as empty space above it. */
+  scroll-margin-top: calc(-1 * var(--section-pad));
 }
 
 .section-head {
@@ -156,7 +163,7 @@ p {
   content: '';
   width: 26px;
   height: 1px;
-  background: var(--ink);
+  background: var(--moss);
 }
 
 .section-title {
@@ -199,11 +206,14 @@ p {
 }
 
 .btn-primary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--moss);
+  color: var(--panel);
+  border-color: var(--moss);
 }
 
 .btn-primary:hover {
+  background: var(--forest);
+  border-color: var(--forest);
   transform: translateY(-2px);
 }
 
@@ -235,6 +245,20 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+/* rounded skill bubbles — used on project cards */
+.bubble {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--graphite);
+  background: var(--panel-2);
+  border: 1px solid transparent;
+  padding: 5px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
 }
 
 .chip {

@@ -41,6 +41,18 @@ export default function Contact() {
             </div>
 
             <div className="contact-row">
+              <dt className="contact-key">LinkedIn</dt>
+              <dd className="contact-val">
+                <a href={c.linkedin} target="_blank" rel="noreferrer" className="contact-anchor">
+                  {c.linkedinLabel}
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" strokeWidth="2" d="M7 17 17 7m0 0H8m9 0v9" />
+                  </svg>
+                </a>
+              </dd>
+            </div>
+
+            <div className="contact-row">
               <dt className="contact-key">Email</dt>
               <dd className="contact-val contact-email">
                 <span>{c.email}</span>

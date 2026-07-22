@@ -13,7 +13,13 @@ export default function JourneyTimeline() {
             <span className="timeline-dot-inner" />
           </div>
           <div className="timeline-card card">
-            <MediaSlot ratio="video" label="Campus" className="timeline-media" />
+            <MediaSlot
+              src={stop.image}
+              alt={stop.imageAlt}
+              ratio="video"
+              label="Campus"
+              className="timeline-media"
+            />
             <span className="timeline-time">{stop.time}</span>
             <h3 className="timeline-place">{stop.place}</h3>
             <span className="timeline-location">{stop.location}</span>

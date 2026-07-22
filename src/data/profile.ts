@@ -1,6 +1,11 @@
 // Personal info used across the site. Edit these to update your details
 // everywhere at once.
 
+// Campus photos for the journey timeline. Imported so Vite fingerprints them
+// and rewrites the URLs for the deployed sub-path automatically.
+import waterlooImg from '../assets/waterloo.jpg';
+import uc3mImg from '../assets/uc3m.jpg';
+
 export const profile = {
   name: 'Ibrahim',
   // Short role line shown under your name in the hero
@@ -37,12 +42,16 @@ export const profile = {
       location: 'Waterloo, Canada',
       detail: 'Electrical Engineering, with a focus on hardware and embedded systems.',
       time: 'Current',
+      image: waterlooImg,
+      imageAlt: 'Waterloo Engineering E7 building sign',
     },
     {
       place: 'Universidad Carlos III de Madrid (UC3M)',
       location: 'Madrid, Spain',
       detail: 'Studying abroad on exchange with a new academic environment, and a chance to broaden my engineering background.',
       time: 'Fall 2026',
+      image: uc3mImg,
+      imageAlt: 'Universidad Carlos III de Madrid campus',
     },
   ],
 
@@ -68,6 +77,8 @@ export const profile = {
     email: 'ischowdh@uwaterloo.ca', // shown as plain text (not a link)
     github: 'https://github.com/ibrahimchowdhuryECE',
     githubLabel: 'github.com/ibrahimchowdhuryECE',
+    linkedin: 'https://www.linkedin.com/in/ibrahim-chowdhury-959851290/',
+    linkedinLabel: 'in/ibrahim-chowdhury',
     location: 'Toronto',
   },
 };

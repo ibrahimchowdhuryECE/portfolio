@@ -27,7 +27,7 @@ export default function MediaSlot({
   return (
     <div className={`mslot mslot--${ratio} ${className ?? ''}`}>
       {src ? (
-        <img className="mslot-img" src={src} alt={alt} />
+        <img className="mslot-img" src={src} alt={alt} loading="lazy" decoding="async" />
       ) : (
         <div className="mslot-empty">
           {/* isometric cube, hints "icon / 3D render goes here" */}

@@ -5,7 +5,7 @@ import type { Project } from '../types/project';
    To add a new project: copy one object below, change the fields, and
    give it a unique `slug`. It will automatically appear in the Projects
    grid on the home page and get its own page at /projects/<slug>.
-   Placeholder text is marked with [TODO] — replace with real details.
+   Placeholder text is marked with [TODO]; replace with real details.
    ===================================================================== */
 
 export const projects: Project[] = [
@@ -13,16 +13,16 @@ export const projects: Project[] = [
     slug: 'blood-glucose-breath',
     title: 'Non-Invasive Blood Glucose Breath Detector',
     blurb:
-      'A handheld device that estimates blood glucose from a breath sample — no finger-pricking required.',
+      'A handheld device that estimates blood glucose from a breath sample, with no finger-pricking required.',
     tags: ['Biomedical', 'Embedded', 'Sensors', 'Hardware'],
     featured: true,
     summary: {
       problem:
         'Diabetics rely on painful, repetitive finger-prick blood tests to track glucose. We set out to make a non-invasive alternative.',
-      role: 'Project at McMaster — [TODO: your specific role, e.g. hardware design / firmware / sensor integration].',
+      role: 'Project at McMaster. [TODO: your specific role, e.g. hardware design / firmware / sensor integration].',
       stack: 'Gas sensors, microcontroller, analog signal conditioning, [TODO: add specifics].',
       outcome:
-        '[TODO: result — e.g. working prototype that correlated breath readings with reference glucose levels].',
+        '[TODO: result, e.g. working prototype that correlated breath readings with reference glucose levels].',
     },
     sections: [
       {
@@ -82,7 +82,7 @@ export const projects: Project[] = [
   {
     slug: 'coming-soon',
     title: 'More Projects Coming Soon',
-    blurb: 'Placeholder — duplicate this entry in src/data/projects.ts to add a new project.',
+    blurb: 'Placeholder. Duplicate this entry in src/data/projects.ts to add a new project.',
     tags: ['Placeholder'],
     summary: {
       problem: '[TODO]',

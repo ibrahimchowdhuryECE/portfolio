@@ -5,7 +5,7 @@ import './ProjectCard.css';
 
 /**
  * A project card: a cover image, the title, and its key skills as bubbles. The
- * whole card links to the project's page. No description — title and skills carry it.
+ * whole card links to the project's page. No description, title and skills carry it.
  */
 export default function ProjectCard({ project }: { project: Project }) {
   const category = project.tags[0] ?? 'Project';

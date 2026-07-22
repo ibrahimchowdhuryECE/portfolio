@@ -30,7 +30,7 @@ export default function MediaSlot({
         <img className="mslot-img" src={src} alt={alt} />
       ) : (
         <div className="mslot-empty">
-          {/* isometric cube — hints "icon / 3D render goes here" */}
+          {/* isometric cube, hints "icon / 3D render goes here" */}
           <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
             <path
               fill="none"

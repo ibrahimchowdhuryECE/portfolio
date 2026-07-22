@@ -47,6 +47,39 @@
   color: var(--ink);
 }
 
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.copy-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.copy-btn:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.copy-btn.is-copied {
+  color: var(--moss);
+  border-color: var(--moss);
+}
+
 .contact-anchor {
   display: inline-flex;
   align-items: center;

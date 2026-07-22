@@ -36,7 +36,7 @@ const SIGNAL_PATH = buildSignal();
 
 /**
  * A self-drawing signal trace. The waveform is swept in left-to-right (slow and
- * smooth), held for a beat, then erased back to a faint baseline — one seamless 9s
+ * smooth), held for a beat, then erased back to a faint baseline, one seamless 9s
  * CSS loop with equal draw and erase times. The reveal uses a clip-path sweep (pure
  * geometry), so the line always reaches the true right edge on any aspect ratio.
  */

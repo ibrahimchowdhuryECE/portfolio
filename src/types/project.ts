@@ -15,7 +15,7 @@ export type Project = {
   thumbnail?: string; // small icon/image for the index row; undefined -> placeholder
   cover?: string; // wide cover image/render for the detail page; undefined -> placeholder
 
-  // "Coles Notes" — the 10-second scannable summary at the top of the page
+  // "Coles Notes", the 10-second scannable summary at the top of the page
   summary: {
     problem: string;
     role: string;

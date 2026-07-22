@@ -14,7 +14,7 @@ type Props = {
 };
 
 /**
- * Types out `text` one character at a time, then stops — no cursor. Reduced-motion
+ * Types out `text` one character at a time, then stops, no cursor. Reduced-motion
  * users get the full text instantly.
  */
 export default function Typewriter({ text, speed = 145, startDelay = 450 }: Props) {

@@ -6,7 +6,7 @@ export const profile = {
   // Short role line shown under your name in the hero
   role: 'Electrical Engineering · University of Waterloo',
   tagline:
-    'Engineering student focused on hardware and embedded systems, from biomedical sensing to FPGA digital logic.',
+    'Engineering student focused on hardware and embedded systems, from PCB design to FPGA digital logic.',
 
   // About section narrative
   about: [
@@ -15,7 +15,7 @@ export const profile = {
     'That mindset also led me into entrepreneurship. Through social media, I’ve generated over $50,000 in sales and learned how much execution depends on attention, trust, and consistency. Whether it is engineering, business, or sport, I care most about turning effort into something real.',
   ],
 
-  // Recognition — links out to the announcement page
+  // Recognition: links out to the announcement page
   award: {
     label: 'Won a startup fund for Beasy Inc.',
     org: 'Enterprise Co-op Pitch · Conrad School',
@@ -46,11 +46,28 @@ export const profile = {
     },
   ],
 
+  // Testimonials / endorsements. Add or remove entries freely; the section
+  // hides itself automatically if this list is empty.
+  testimonials: [
+    {
+      quote:
+        '[TODO: replace with a real 2-3 sentence endorsement from someone who can speak to your work, e.g. a professor, manager, or teammate. Keep it specific.]',
+      name: '[Full Name]',
+      title: 'Professor, ECE · University of Waterloo',
+    },
+    {
+      quote:
+        '[TODO: a second short endorsement. One or two focused sentences reads best.]',
+      name: '[Full Name]',
+      title: 'Manager · Company',
+    },
+  ],
+
   // Contact details.
   contact: {
     email: 'ischowdh@uwaterloo.ca', // shown as plain text (not a link)
     github: 'https://github.com/ibrahimchowdhuryECE',
     githubLabel: 'github.com/ibrahimchowdhuryECE',
-    location: 'tbd',
+    location: 'Toronto',
   },
 };

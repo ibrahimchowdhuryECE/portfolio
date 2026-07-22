@@ -10,7 +10,7 @@ export default function NotFound() {
           <span className="notfound-code">404</span>
           <h1 className="notfound-title">Page not found</h1>
           <p className="lead">
-            That page doesn’t exist — it may have moved, or the link is off. Let’s get you back.
+            That page doesn’t exist. It may have moved, or the link is off. Let’s get you back.
           </p>
           <Link to="/" className="btn btn-primary">
             Back to home

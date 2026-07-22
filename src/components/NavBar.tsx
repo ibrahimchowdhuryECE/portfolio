@@ -6,7 +6,7 @@ const sections = [
   { id: 'projects', label: 'Projects' },
   { id: 'about', label: 'About' },
   { id: 'journey', label: 'Education' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'testimonials', label: 'Testimonials' },
 ];
 
 export default function NavBar() {
@@ -59,7 +59,7 @@ export default function NavBar() {
             </button>
           ))}
           <button className="nav-link nav-cta" onClick={() => goToSection('contact')}>
-            Let’s talk
+            Get in Touch
           </button>
         </nav>
       </div>

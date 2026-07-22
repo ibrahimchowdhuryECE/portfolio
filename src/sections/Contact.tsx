@@ -1,9 +1,21 @@
+import { useState } from 'react';
 import { profile } from '../data/profile';
 import Reveal from '../components/Reveal';
 import './Contact.css';
 
 export default function Contact() {
   const c = profile.contact;
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(c.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // Clipboard access can be blocked (e.g. insecure context); fail quietly.
+    }
+  };
 
   return (
     <section id="contact" className="section contact">
@@ -30,7 +42,17 @@ export default function Contact() {
 
             <div className="contact-row">
               <dt className="contact-key">Email</dt>
-              <dd className="contact-val">{c.email}</dd>
+              <dd className="contact-val contact-email">
+                <span>{c.email}</span>
+                <button
+                  type="button"
+                  className={`copy-btn ${copied ? 'is-copied' : ''}`}
+                  onClick={copyEmail}
+                  aria-label={copied ? 'Email copied' : 'Copy email address'}
+                >
+                  {copied ? 'Copied' : 'Copy'}
+                </button>
+              </dd>
             </div>
 
             <div className="contact-row">

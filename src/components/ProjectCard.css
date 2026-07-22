@@ -23,6 +23,40 @@
   border-radius: 0;
 }
 
+/* Photo cards (e.g. the glucose sensor render): full crisp color on a warm
+   beige that matches the render so the device sits seamlessly, plus a gentle
+   float so it reads as a live product shot rather than a flat thumbnail. */
+.pcard-media--photo .mslot {
+  background: #efe7d8; /* ~matches the render's beige; tweak to taste */
+}
+
+.pcard-media--photo .mslot::before,
+.pcard-media--photo .mslot::after {
+  display: none; /* drop the registration ticks for a clean product shot */
+}
+
+.pcard-media--photo .mslot-img {
+  filter: none; /* full color, overriding the site's default grayscale media */
+  object-fit: contain;
+  animation: pcard-float 4.5s ease-in-out infinite;
+}
+
+.pcard:hover .pcard-media--photo .mslot-img {
+  animation-play-state: paused;
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+@keyframes pcard-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
 .pcard-body {
   position: relative;
   display: flex;

@@ -14,7 +14,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   return (
     <Link to={`/projects/${project.slug}`} className="pcard">
-      <div className="pcard-media">
+      <div className={`pcard-media ${project.thumbnail ? 'pcard-media--photo' : ''}`}>
         <MediaSlot src={project.thumbnail} ratio="video" label={code} />
       </div>
 

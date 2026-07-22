@@ -1,4 +1,5 @@
 import type { Project } from '../types/project';
+import glucoseSensor from '../assets/glucose-sensor.jpg';
 
 /* =====================================================================
    YOUR PROJECTS LIVE HERE.
@@ -16,6 +17,7 @@ export const projects: Project[] = [
       'A handheld device that estimates blood glucose from a breath sample, with no finger-pricking required.',
     tags: ['Biomedical', 'Embedded', 'Sensors', 'Hardware'],
     featured: true,
+    thumbnail: glucoseSensor,
     summary: {
       problem:
         'Diabetics rely on painful, repetitive finger-prick blood tests to track glucose. We set out to make a non-invasive alternative.',

@@ -55,6 +55,12 @@
   margin-bottom: 18px;
 }
 
+/* Campus photos show in full, vivid color (overriding the site's default
+   grayscale media treatment) with a slight boost so they pop. */
+.timeline-media .mslot-img {
+  filter: saturate(1.14) contrast(1.06) brightness(1.02);
+}
+
 .timeline-time {
   display: inline-block;
   font-family: var(--mono);

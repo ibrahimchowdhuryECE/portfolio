@@ -40,9 +40,9 @@ const SIGNAL_PATH = buildSignal();
  * CSS loop with equal draw and erase times. The reveal uses a clip-path sweep (pure
  * geometry), so the line always reaches the true right edge on any aspect ratio.
  */
-export default function SignalPulses() {
+export default function SignalPulses({ className = '' }: { className?: string }) {
   return (
-    <div className="pulses" aria-hidden="true">
+    <div className={`pulses ${className}`.trim()} aria-hidden="true">
       <svg
         className="pulses-svg"
         viewBox="0 0 1200 140"

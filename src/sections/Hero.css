@@ -39,24 +39,52 @@
   color: var(--ink);
 }
 
+/* relatively-positioned frame so the pulse can center on the name and bleed
+   past the container to the full viewport width */
+.hero-name-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: clamp(16px, 2.4vw, 32px);
+}
+
+.hero-name-wrap .pulses--hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: clamp(200px, 30vw, 360px);
+  z-index: 0;
+  pointer-events: none;
+}
+
 .hero-name {
+  position: relative;
+  z-index: 1;
   font-family: var(--display);
   font-weight: 700;
   font-size: clamp(42px, 7vw, 88px);
   line-height: 1.02;
   letter-spacing: -0.035em;
   color: var(--ink);
-  margin-top: clamp(16px, 2.4vw, 32px);
   white-space: pre-line; /* honours the "\n" between first and last name */
   /* reserve two lines so typing doesn't shift the layout below */
   min-height: 2.04em;
 }
 
+@media (max-width: 720px) {
+  .hero-name-wrap .pulses--hero {
+    height: clamp(140px, 40vw, 220px);
+  }
+}
+
 .hero-readout {
-  font-family: var(--mono);
-  font-size: clamp(12px, 1.4vw, 14px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.6vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--pewter);
   margin-top: clamp(16px, 2.2vw, 24px);
 }

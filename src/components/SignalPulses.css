@@ -16,6 +16,21 @@
   display: block;
 }
 
+/* Hero variant: transparent, borderless overlay that traces behind the name. */
+.pulses--hero {
+  background: transparent;
+  border: 0;
+}
+
+.pulses--hero .pulses-base {
+  opacity: 0.45;
+}
+
+.pulses--hero .draw-line {
+  stroke: var(--accent);
+  opacity: 0.6;
+}
+
 /* faint resting baseline, always visible under the signal */
 .pulses-base {
   stroke: var(--line);

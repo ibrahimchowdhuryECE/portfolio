@@ -21,9 +21,12 @@ export default function Hero() {
     <section id="top" className="hero">
       <div className="container hero-inner">
         <motion.div className="hero-text" variants={container} initial="hidden" animate="show">
-          <motion.h1 className="hero-name" variants={item}>
-            <Typewriter text={'Ibrahim\nChowdhury'} />
-          </motion.h1>
+          <div className="hero-name-wrap">
+            <SignalPulses className="pulses--hero" />
+            <motion.h1 className="hero-name" variants={item}>
+              <Typewriter text={'Ibrahim\nChowdhury'} />
+            </motion.h1>
+          </div>
 
           <motion.p className="hero-readout" variants={item}>
             {profile.role}
@@ -52,8 +55,6 @@ export default function Hero() {
           <MediaSlot ratio="video" label="B-roll / 3D render" />
         </motion.div>
       </div>
-
-      <SignalPulses />
     </section>
   );
 }

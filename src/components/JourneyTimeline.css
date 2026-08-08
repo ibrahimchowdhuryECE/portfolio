@@ -63,7 +63,7 @@
 
 .timeline-time {
   display: inline-block;
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -81,7 +81,7 @@
 }
 
 .timeline-location {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 12px;
   color: var(--pewter);
 }

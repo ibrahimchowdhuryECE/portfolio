@@ -20,19 +20,11 @@
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
   font-family: var(--display);
   font-weight: 600;
   font-size: 16px;
   letter-spacing: -0.01em;
-  color: var(--ink);
-}
-
-.nav-logo-mark {
-  width: 9px;
-  height: 9px;
-  background: var(--ink);
-  border-radius: 1px;
+  color: var(--accent);
 }
 
 .nav-links {
@@ -46,7 +38,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--graphite);
+  color: var(--accent);
   background: none;
   border: none;
   cursor: pointer;
@@ -56,17 +48,17 @@
 }
 
 .nav-link:hover {
-  color: var(--ink);
+  color: var(--forest);
 }
 
 .nav-cta {
   margin-left: 8px;
-  color: var(--ink);
+  color: var(--accent);
   border: 1px solid var(--line-strong);
 }
 
 .nav-cta:hover {
-  border-color: var(--ink);
+  border-color: var(--accent);
 }
 
 /* Hamburger */

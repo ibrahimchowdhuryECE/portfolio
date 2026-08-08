@@ -13,7 +13,7 @@
 }
 
 .notfound-code {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: clamp(64px, 16vw, 140px);
   font-weight: 600;
   line-height: 1;

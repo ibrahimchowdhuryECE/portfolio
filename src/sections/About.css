@@ -13,7 +13,7 @@
 }
 
 .about-portrait-cap {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -65,7 +65,7 @@
 }
 
 .about-award-text {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 13px;
   line-height: 1.45;
   color: var(--graphite);
@@ -81,7 +81,7 @@
 /* skills spec sheet */
 .about-spec-head {
   display: block;
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -103,7 +103,7 @@
 }
 
 .spec-key {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -112,7 +112,7 @@
 
 .spec-val {
   margin: 0;
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 13px;
   line-height: 1.6;
   color: var(--graphite);

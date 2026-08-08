@@ -58,7 +58,7 @@
 }
 
 .mslot-label {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;

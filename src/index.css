@@ -15,14 +15,14 @@
   --line: #d6cdba; /* hairline rules */
   --line-strong: #bdb29a;
 
-  /* Accents — dark, desaturated neutral green */
-  --moss: #3f4a3a; /* dark muted green (primary accent) */
-  --forest: #2b332a; /* deeper muted green */
+  /* Accents — muted green, a touch greener but still dark and restrained */
+  --moss: #3c4d2f; /* muted green (primary accent) */
+  --forest: #2a3a20; /* deeper green */
 
   --accent: var(--moss);
   --accent-2: var(--forest);
-  --accent-soft: rgba(63, 74, 58, 0.1);
-  --accent-glow: rgba(63, 74, 58, 0.2);
+  --accent-soft: rgba(60, 77, 47, 0.1);
+  --accent-glow: rgba(60, 77, 47, 0.2);
   --gradient: var(--moss);
   --gradient-pop: var(--forest);
 
@@ -247,7 +247,7 @@ p {
 
 /* rounded skill bubbles — used on project cards */
 .bubble {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 11px;
   letter-spacing: 0.02em;
   color: var(--graphite);
@@ -262,7 +262,7 @@ p {
 .chip {
   display: inline-flex;
   align-items: center;
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 13px;
   color: var(--graphite);
   border: 1px solid var(--line);

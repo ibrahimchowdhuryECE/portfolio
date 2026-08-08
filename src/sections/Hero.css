@@ -10,7 +10,9 @@
   align-items: center;
   text-align: center;
   gap: 0;
-  padding-bottom: clamp(48px, 7vw, 88px);
+  /* match a normal section's block padding so the gap to Projects equals the
+     spacing between the other sections */
+  padding-bottom: var(--section-pad);
 }
 
 .hero-text {
@@ -72,6 +74,14 @@
   white-space: pre-line; /* honours the "\n" between first and last name */
   /* reserve two lines so typing doesn't shift the layout below */
   min-height: 2.04em;
+  /* Halo in the page colour: invisible on the beige background but occludes the
+     pulse trace right around the glyphs, so the signal fades out behind the name
+     and only shows in the open space. */
+  text-shadow:
+    0 0 6px var(--paper),
+    0 0 6px var(--paper),
+    0 0 14px var(--paper),
+    0 0 14px var(--paper);
 }
 
 @media (max-width: 720px) {

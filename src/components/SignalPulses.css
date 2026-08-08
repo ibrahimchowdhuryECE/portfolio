@@ -28,7 +28,8 @@
 
 .pulses--hero .draw-line {
   stroke: var(--accent);
-  opacity: 0.6;
+  stroke-width: 3;
+  opacity: 0.68;
 }
 
 /* faint resting baseline, always visible under the signal */

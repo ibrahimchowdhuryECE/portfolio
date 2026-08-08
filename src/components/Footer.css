@@ -30,14 +30,14 @@
 }
 
 .footer-meta {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--pewter);
 }
 
 .footer-link {
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 12px;
   letter-spacing: 0.04em;
   color: var(--ink);

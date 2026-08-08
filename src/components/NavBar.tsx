@@ -39,7 +39,6 @@ export default function NavBar() {
     <header className="nav">
       <div className="nav-inner container">
         <Link to="/" className="nav-logo" onClick={goHome}>
-          <span className="nav-logo-mark" aria-hidden="true" />
           Ibrahim Chowdhury
         </Link>
 

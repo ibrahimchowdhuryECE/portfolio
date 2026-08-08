@@ -49,7 +49,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: 'easeOut', delay: 0.3 }}
         >
-          <MediaSlot ratio="portrait" label="B-roll / 3D render" />
+          <MediaSlot ratio="video" label="B-roll / 3D render" />
         </motion.div>
       </div>
 

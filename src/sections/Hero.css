@@ -42,14 +42,14 @@
 .hero-name {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(58px, 12vw, 136px);
-  line-height: 0.88;
-  letter-spacing: -0.045em;
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   color: var(--ink);
-  margin-top: clamp(20px, 3vw, 40px);
+  margin-top: clamp(16px, 2.4vw, 32px);
   white-space: pre-line; /* honours the "\n" between first and last name */
   /* reserve two lines so typing doesn't shift the layout below */
-  min-height: 1.76em;
+  min-height: 2.04em;
 }
 
 .hero-readout {
@@ -58,17 +58,17 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--pewter);
-  margin-top: clamp(18px, 2.4vw, 28px);
+  margin-top: clamp(16px, 2.2vw, 24px);
 }
 
 .hero-tagline {
   font-family: var(--serif);
-  font-size: clamp(19px, 2.4vw, 27px);
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  max-width: 24ch;
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--graphite);
+  max-width: 62ch;
   margin-top: clamp(14px, 1.8vw, 20px);
 }
 
@@ -83,15 +83,12 @@
 .hero-media {
   display: flex;
   justify-content: center;
-  margin-top: clamp(40px, 6vw, 72px);
+  width: 100%;
+  margin-top: clamp(36px, 5vw, 64px);
 }
 
+/* wide render banner — spans the full hero width */
 .hero-media .mslot {
-  max-width: 340px;
-}
-
-@media (max-width: 880px) {
-  .hero-media .mslot {
-    max-width: 280px;
-  }
+  width: 100%;
+  max-width: 100%;
 }

@@ -1,6 +1,6 @@
 /* =====================================================================
    Global theme — "engineering instrument sheet", warm + faded
-   Beige paper, washed warm-black ink, warm neutral (taupe/graphite) accents.
+   Beige paper, washed warm-black ink, dark muted-green accents.
    Type: Big Shoulders Display (display) · Hanken Grotesk (prose) · IBM Plex Mono (data)
    ===================================================================== */
 
@@ -15,14 +15,14 @@
   --line: #d6cdba; /* hairline rules */
   --line-strong: #bdb29a;
 
-  /* Neutral accents — warm taupe/graphite (no green), matched to the beige paper */
-  --moss: #4a443a; /* warm dark neutral (primary accent) */
-  --forest: #2a2620; /* deepest warm neutral (matches ink) */
+  /* Accents — dark, desaturated neutral green */
+  --moss: #3f4a3a; /* dark muted green (primary accent) */
+  --forest: #2b332a; /* deeper muted green */
 
   --accent: var(--moss);
   --accent-2: var(--forest);
-  --accent-soft: rgba(42, 38, 32, 0.08);
-  --accent-glow: rgba(42, 38, 32, 0.16);
+  --accent-soft: rgba(63, 74, 58, 0.1);
+  --accent-glow: rgba(63, 74, 58, 0.2);
   --gradient: var(--moss);
   --gradient-pop: var(--forest);
 
@@ -45,9 +45,9 @@
   --radius: 2px;
   --radius-sm: 2px;
 
-  /* Typography */
-  --display: 'Big Shoulders Display', system-ui, sans-serif;
-  --serif: 'Hanken Grotesk', system-ui, sans-serif; /* body prose (now grotesque) */
+  /* Typography — Inter (SF Pro-style grotesque) for display + prose, Plex Mono for data */
+  --display: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --serif: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; /* body prose */
   --mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
   --sans: var(--serif); /* legacy alias -> body face */
 

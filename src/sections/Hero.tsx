@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { profile } from '../data/profile';
 import MediaSlot from '../components/MediaSlot';
-import Marquee from '../components/Marquee';
 import SignalPulses from '../components/SignalPulses';
 import Typewriter from '../components/Typewriter';
 import './Hero.css';
@@ -46,15 +45,13 @@ export default function Hero() {
 
         <motion.div
           className="hero-media"
-          initial={{ opacity: 0, x: 44 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: 'easeOut', delay: 0.3 }}
         >
           <MediaSlot ratio="portrait" label="B-roll / 3D render" />
         </motion.div>
       </div>
-
-      <Marquee />
 
       <SignalPulses />
     </section>

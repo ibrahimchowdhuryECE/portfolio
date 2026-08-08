@@ -1,6 +1,6 @@
 /* =====================================================================
    Global theme — "engineering instrument sheet", warm + faded
-   Beige paper, washed warm-black ink, dull olive + deep forest green accent.
+   Beige paper, washed warm-black ink, warm neutral (taupe/graphite) accents.
    Type: Big Shoulders Display (display) · Hanken Grotesk (prose) · IBM Plex Mono (data)
    ===================================================================== */
 
@@ -15,14 +15,14 @@
   --line: #d6cdba; /* hairline rules */
   --line-strong: #bdb29a;
 
-  /* Muted accents — dull olive (primary) and deep forest green */
-  --moss: #6a7550; /* dull olive-green */
-  --forest: #4a5738; /* deep muted forest */
+  /* Neutral accents — warm taupe/graphite (no green), matched to the beige paper */
+  --moss: #4a443a; /* warm dark neutral (primary accent) */
+  --forest: #2a2620; /* deepest warm neutral (matches ink) */
 
   --accent: var(--moss);
   --accent-2: var(--forest);
-  --accent-soft: rgba(106, 117, 80, 0.1);
-  --accent-glow: rgba(106, 117, 80, 0.22);
+  --accent-soft: rgba(42, 38, 32, 0.08);
+  --accent-glow: rgba(42, 38, 32, 0.16);
   --gradient: var(--moss);
   --gradient-pop: var(--forest);
 

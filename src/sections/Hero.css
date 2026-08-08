@@ -1,14 +1,23 @@
 .hero {
-  padding-top: clamp(40px, 6vw, 80px);
+  padding-top: clamp(48px, 8vw, 104px);
   padding-bottom: 0;
 }
 
+/* Centered, stacked hero — name on top, then subhead, tagline, CTAs, render. */
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: clamp(32px, 5vw, 72px);
-  padding-bottom: clamp(40px, 6vw, 72px);
+  text-align: center;
+  gap: 0;
+  padding-bottom: clamp(48px, 7vw, 88px);
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 /* mono instrument header line */
@@ -33,43 +42,48 @@
 .hero-name {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(52px, 9vw, 108px);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  font-size: clamp(58px, 12vw, 136px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
   color: var(--ink);
-  margin-top: clamp(26px, 4vw, 48px);
+  margin-top: clamp(20px, 3vw, 40px);
   white-space: pre-line; /* honours the "\n" between first and last name */
   /* reserve two lines so typing doesn't shift the layout below */
-  min-height: 1.84em;
+  min-height: 1.76em;
 }
 
 .hero-readout {
   font-family: var(--mono);
-  font-size: clamp(12px, 1.5vw, 14px);
-  letter-spacing: 0.04em;
-  color: var(--graphite);
-  margin-top: 24px;
+  font-size: clamp(12px, 1.4vw, 14px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  margin-top: clamp(18px, 2.4vw, 28px);
 }
 
 .hero-tagline {
   font-family: var(--serif);
-  font-size: clamp(17px, 2vw, 21px);
-  line-height: 1.55;
-  color: var(--graphite);
-  max-width: 48ch;
-  margin-top: 16px;
+  font-size: clamp(19px, 2.4vw, 27px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 24ch;
+  margin-top: clamp(14px, 1.8vw, 20px);
 }
 
 .hero-ctas {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
-  margin-top: 30px;
+  margin-top: clamp(28px, 3.4vw, 40px);
 }
 
 .hero-media {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-top: clamp(40px, 6vw, 72px);
 }
 
 .hero-media .mslot {
@@ -77,16 +91,7 @@
 }
 
 @media (max-width: 880px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-media {
-    justify-content: flex-start;
-    margin-top: 8px;
-  }
-
   .hero-media .mslot {
-    max-width: 260px;
+    max-width: 280px;
   }
 }

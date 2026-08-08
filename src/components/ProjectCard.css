@@ -38,22 +38,22 @@
 .pcard-media--photo .mslot-img {
   filter: none; /* full color, overriding the site's default grayscale media */
   object-fit: contain;
-  animation: pcard-float 4.5s ease-in-out infinite;
+  /* still at rest; the smooth settle back down when the hover ends */
+  transition: transform 0.45s ease;
 }
 
+/* On hover the render lifts up and gently floats in place. */
 .pcard:hover .pcard-media--photo .mslot-img {
-  animation-play-state: paused;
-  transform: scale(1.05);
-  transition: transform 0.4s ease;
+  animation: pcard-float 3.6s ease-in-out infinite;
 }
 
 @keyframes pcard-float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(-5px);
   }
   50% {
-    transform: translateY(-7px);
+    transform: translateY(-12px);
   }
 }
 

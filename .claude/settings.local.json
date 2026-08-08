@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "PowerShell($env:Path = \"C:\\\\Program Files\\\\nodejs;$env:Path\"; node \"node_modules/typescript/bin/tsc\" --noEmit; if \\($?\\) { \"TYPECHECK OK\" })"
+      "PowerShell($env:Path = \"C:\\\\Program Files\\\\nodejs;$env:Path\"; node \"node_modules/typescript/bin/tsc\" --noEmit; if \\($?\\) { \"TYPECHECK OK\" })",
+      "PowerShell(npm run build)"
     ]
   }
 }

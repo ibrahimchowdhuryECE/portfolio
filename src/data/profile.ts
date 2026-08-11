@@ -31,7 +31,7 @@ export const profile = {
   skills: [
     { group: 'Hardware', items: ['Circuit Design', 'Sensors', 'PCB Design', 'Signal Conditioning'] },
     { group: 'Embedded / Digital', items: ['VHDL', 'FPGA', 'Microcontrollers', 'FSM Design'] },
-    { group: 'Software', items: ['C++', 'Python', 'MATLAB', 'Git'] },
+    { group: 'Software', items: ['C++', 'Python', 'MATLAB', 'Git', 'GitHub'] },
     { group: 'Tools', items: ['Vivado', 'Oscilloscope', 'VNA', 'Lab Bench', 'Soldering'] },
   ],
 

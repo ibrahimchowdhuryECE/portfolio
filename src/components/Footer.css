@@ -12,23 +12,6 @@
   flex-wrap: wrap;
 }
 
-.footer-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 15px;
-  color: var(--ink);
-}
-
-.footer-mark {
-  width: 8px;
-  height: 8px;
-  background: var(--ink);
-  border-radius: 1px;
-}
-
 .footer-meta {
   font-family: var(--serif);
   font-size: 12px;

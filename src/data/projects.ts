@@ -82,6 +82,41 @@ export const projects: Project[] = [
     links: [],
   },
   {
+    slug: 'accelerated-ai-chip',
+    title: 'Accelerated AI Chip',
+    blurb:
+      'A custom silicon accelerator for neural-network inference, built for high throughput at low power.',
+    tags: ['Silicon', 'Digital Design', 'Machine Learning', 'Verilog'],
+    status: 'In the works',
+    featured: true,
+    summary: {
+      problem:
+        '[TODO: general-purpose processors spend most of their power moving data rather than computing, which caps how fast and efficiently neural networks can run at the edge.]',
+      role: '[TODO: your role, e.g. RTL design, architecture, verification.]',
+      stack: '[TODO: e.g. SystemVerilog, matrix-multiply unit, on-chip SRAM, FPGA prototype, synthesis flow.]',
+      outcome: '[TODO: in progress — target throughput / power numbers once measured.]',
+    },
+    sections: [
+      {
+        heading: 'Overview',
+        body: 'In the works. A hardware accelerator aimed at running neural-network inference far faster and more efficiently than a general-purpose CPU, by building the multiply-accumulate math directly into silicon. [TODO: expand with the motivation, target workload, and scope.]',
+      },
+      {
+        heading: 'Approach & Design',
+        body: '[TODO: describe the architecture — systolic array or MAC unit layout, memory hierarchy and dataflow, precision/quantization choices, and the clocking strategy.]',
+      },
+      {
+        heading: 'Challenges',
+        body: '[TODO: e.g. keeping the compute units fed without stalling on memory, timing closure, power budget, verification against a software reference model.]',
+      },
+      {
+        heading: 'Current Status',
+        body: 'In the works. [TODO: what is done so far, what is next, and the milestones you are aiming for.]',
+      },
+    ],
+    links: [],
+  },
+  {
     slug: 'coming-soon',
     title: 'More Projects Coming Soon',
     blurb: 'Placeholder. Duplicate this entry in src/data/projects.ts to add a new project.',

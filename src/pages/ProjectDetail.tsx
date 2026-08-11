@@ -34,6 +34,7 @@ export default function ProjectDetail() {
           <Reveal>
             <header className="detail-header">
               <div className="tag-row">
+                {project.status && <span className="tag tag--status">{project.status}</span>}
                 {project.tags.map((t) => (
                   <span key={t} className="tag">
                     {t}

@@ -19,7 +19,10 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="pcard-body">
-        <span className="pcard-cat">{category}</span>
+        <span className="pcard-meta">
+          <span className="pcard-cat">{category}</span>
+          {project.status && <span className="pcard-status">{project.status}</span>}
+        </span>
         <h3 className="pcard-title">{project.title}</h3>
 
         <div className="pcard-skills">

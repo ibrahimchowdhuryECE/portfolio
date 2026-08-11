@@ -12,6 +12,7 @@ export type Project = {
   blurb: string; // one-line summary shown on the card
   tags: string[]; // short tech/skill tags, e.g. ["Embedded", "Sensors"]
   featured?: boolean; // (reserved) flag to highlight a project later
+  status?: string; // optional badge, e.g. "In the works" — omit for finished projects
   thumbnail?: string; // small icon/image for the index row; undefined -> placeholder
   cover?: string; // wide cover image/render for the detail page; undefined -> placeholder
 

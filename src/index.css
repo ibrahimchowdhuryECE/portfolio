@@ -239,6 +239,16 @@ p {
   border-radius: var(--radius);
 }
 
+/* status variant, e.g. an unfinished project marked "In the works" */
+.tag--status {
+  color: var(--forest);
+  background: var(--accent-soft);
+  border-color: var(--moss);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
 .tag-row {
   display: flex;
   flex-wrap: wrap;

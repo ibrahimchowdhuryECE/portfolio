@@ -65,6 +65,27 @@
   padding: 20px 22px 22px;
 }
 
+.pcard-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-right: 28px; /* clear the arrow */
+}
+
+/* "In the works" pill — marks a project that isn't finished yet */
+.pcard-status {
+  font-family: var(--serif);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+  background: var(--accent-soft);
+  border: 1px solid var(--moss);
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+
 .pcard-cat {
   font-family: var(--serif);
   font-size: 11px;

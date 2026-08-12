@@ -15,18 +15,18 @@ export const projects: Project[] = [
     title: 'Non-Invasive Blood Glucose Breath Detector',
     blurb:
       'A handheld device that estimates blood glucose from a breath sample, with no finger-pricking required.',
-    tags: ['Biomedical', 'Analog Front End', 'PCB Design', 'Embedded C', 'ESP32-S3', 'Sensors'],
+    tags: ['Biomedical', 'Mixed Signal Design', 'PCB Design', 'Embedded C', 'ESP32-S3', 'Sensors'],
     status: 'In the works · PCB and validation',
     featured: true,
     thumbnail: glucoseSensor,
     summary: {
       problem:
         'Diabetics rely on painful, repetitive finger-prick blood tests to track glucose. We set out to make a non-invasive alternative.',
-      role: 'Research Hardware Team Lead, McMaster. Led hardware architecture, component selection, system integration, and core design decisions across analog, power, PCB, and firmware.',
+      role: 'Research Hardware Team Lead, McMaster. Leading entire hardware scope.',
       stack:
-        'Altium Designer, embedded C, Python. Analog signal conditioning, ADC acquisition, mixed-voltage power design, I2C sensor integration, Wi-Fi/BLE data collection, formal verification.',
+        'Altium Designer, Embedded C, Python, Signal Conditioning, ADC, Mixed Signal Design, I2C, Wi-Fi/BLE data collection, formal verification.',
       outcome:
-        'Working handheld prototype. Custom PCB complete, now on a DFT/DFM revision. Analog front end and power path validated. Multi-sensor acquisition live. Glucose correlation in progress.',
+        'Working prototype. Custom PCB design complete (DFT and DFM). Analog front end and power path validated. Multi-sensor acquisition live. Collecting data. Glucose ML algorithm and correlation in progress.',
     },
     sections: [
       {

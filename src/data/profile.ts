@@ -60,15 +60,15 @@ export const profile = {
   testimonials: [
     {
       quote:
-        '[TODO: replace with a real 2-3 sentence endorsement from someone who can speak to your work, e.g. a professor, manager, or teammate. Keep it specific.]',
-      name: '[Full Name]',
-      title: 'Professor, ECE · University of Waterloo',
+        'Ibrahim shows tremendous potential. He has demonstrated impressive aptitude for all tasks assigned to him; his curiosity and thoroughness have been evident in his work. He is encouraged to continue his curiosity, asking questions, and taking advantage of opportunities to improve career development.',
+      name: 'Paul Radcliffe',
+      title: 'Chief Electrical Engineer, Toronto Transit Commission',
     },
     {
       quote:
-        '[TODO: a second short endorsement. One or two focused sentences reads best.]',
-      name: '[Full Name]',
-      title: 'Manager · Company',
+        'Ibrahim as exceeded his original term goas by large margins. He captured many, many new opportunities with his design sprints and to grow user/customer base very rapidly. Ibrahim\'s rate of learning progression has been among the highest in the Eco-op cohort',
+      name: 'Wayne Change',
+      title: 'Enterprise Co-op Director, Conrad School of Business',
     },
   ],
 

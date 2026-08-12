@@ -15,33 +15,53 @@ export const projects: Project[] = [
     title: 'Non-Invasive Blood Glucose Breath Detector',
     blurb:
       'A handheld device that estimates blood glucose from a breath sample, with no finger-pricking required.',
-    tags: ['Biomedical', 'Embedded', 'Sensors', 'Hardware'],
+    tags: ['Biomedical', 'Analog Front End', 'PCB Design', 'Embedded C', 'ESP32-S3', 'Sensors'],
+    status: 'In the works · PCB and validation',
     featured: true,
     thumbnail: glucoseSensor,
     summary: {
       problem:
         'Diabetics rely on painful, repetitive finger-prick blood tests to track glucose. We set out to make a non-invasive alternative.',
-      role: 'Project at McMaster. [TODO: your specific role, e.g. hardware design / firmware / sensor integration].',
-      stack: 'Gas sensors, microcontroller, analog signal conditioning, [TODO: add specifics].',
+      role: 'Research Hardware Team Lead, McMaster. Led hardware architecture, component selection, system integration, and core design decisions across analog, power, PCB, and firmware.',
+      stack:
+        'Altium Designer, embedded C, Python. Analog signal conditioning, ADC acquisition, mixed-voltage power design, I2C sensor integration, Wi-Fi/BLE data collection, formal verification.',
       outcome:
-        '[TODO: result, e.g. working prototype that correlated breath readings with reference glucose levels].',
+        'Working handheld prototype. Custom PCB complete, now on a DFT/DFM revision. Analog front end and power path validated. Multi-sensor acquisition live. Glucose correlation in progress.',
     },
     sections: [
       {
         heading: 'Overview',
-        body: 'Built a handheld prototype that analyzes volatile compounds in a person’s breath (such as acetone) which correlate with blood glucose levels, offering a pain-free screening method. [TODO: expand with the motivation and scope.]',
+        body: 'Handheld device that reads breath VOCs such as acetone, which tracks glucose dynamics, as a pain-free alternative to finger-pricks. It captures the VOC signal, conditions it through a low-noise analog chain, and logs environmental context so readings normalize before classification. A research and screening prototype, not a medical device.',
       },
       {
         heading: 'Approach & Design',
-        body: '[TODO: describe the sensor choice, the circuit / signal conditioning, the microcontroller and how a reading is captured and processed.]',
+        bullets: [
+          'Designed the complete schematic: multi-sensor network, analog conditioning, ADC, ESP32-S3 control, I2C, mixed-voltage rails.',
+          'MQ138 VOC sensor detects acetone-range compounds; BME688 and SCD-41 compensate for temperature, humidity, and CO2.',
+          'A precision divider scales the 0 to 5V sensor output into the ADS1115’s ±2.048V window, buffered by an OPA333 zero-drift op-amp and filtered by an RC low-pass before the ADC.',
+          'A second ADC channel monitors the 5V rail so every reading normalizes against supply drift.',
+          'Power subsystem: TPS61023 boost, Li-ion charging, power-path management, LDO regulation, protection, and system-level budgeting.',
+          'ESP32-S3 runs an FSM-controlled measurement cycle over I2C and streams data over Wi-Fi and BLE.',
+        ],
       },
       {
         heading: 'Challenges',
-        body: '[TODO: e.g. sensor drift, calibration against reference glucose data, noise, breath sampling consistency.]',
+        bullets: [
+          'Thermal isolation: split the enclosure into a dual-chamber design, separating the heated sensor from the intake path so its thermal plume does not corrupt readings.',
+          'Sensor selection: early characterization of the MQ138 metal-oxide sensor showed classic MOX limits, including baseline drift, humidity cross-sensitivity, and slow recovery. Moved toward a photolithographically-fabricated sensing element for better selectivity and stability, which introduced new drive, interface, and mounting constraints.',
+          'Power under full load: the sensor heater and the Wi-Fi/BLE radio draw heavy, bursty current on one battery-backed rail. Sized the boost stage and power path to hold 5V regulation without browning out the MCU.',
+        ],
       },
       {
         heading: 'Results',
-        body: '[TODO: what you achieved, accuracy/correlation, demos, next steps.]',
+        bullets: [
+          'Complete schematic and full analog chain validated.',
+          'Multi-sensor acquisition working over I2C.',
+          'Custom Altium PCB complete; combined DFT/DFM revision in fabrication prep.',
+          'Firmware brings up sensor drivers, ADC configuration, and Wi-Fi/BLE collection, producing structured VOC datasets for future ML-based glucose analysis.',
+          'Preliminary bench and breath-capture tests show clean, repeatable signals; power path characterized end to end.',
+          'Next: fabricate the DFT/DFM board, build the ML pipeline, run drift and repeatability characterization, then correlate against reference glucose data.',
+        ],
       },
     ],
     links: [],

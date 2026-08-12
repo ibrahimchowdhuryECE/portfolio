@@ -84,7 +84,14 @@ export default function ProjectDetail() {
               <Reveal key={sec.heading} delay={Math.min(i * 0.05, 0.2)}>
                 <section className="detail-section">
                   <h2 className="detail-section-title">{sec.heading}</h2>
-                  <p className="detail-section-body">{sec.body}</p>
+                  {sec.body && <p className="detail-section-body">{sec.body}</p>}
+                  {sec.bullets && sec.bullets.length > 0 && (
+                    <ul className="detail-bullets">
+                      {sec.bullets.map((b) => (
+                        <li key={b}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
                 </section>
               </Reveal>
             ))}

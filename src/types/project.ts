@@ -3,7 +3,8 @@
 
 export type ProjectSection = {
   heading: string;
-  body: string; // a paragraph; supports plain text
+  body?: string; // an intro paragraph; plain text
+  bullets?: string[]; // optional list of points, rendered under the paragraph
 };
 
 export type Project = {

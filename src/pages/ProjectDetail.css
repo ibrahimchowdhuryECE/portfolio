@@ -113,6 +113,33 @@
   color: var(--graphite);
 }
 
+/* point-form detail under a section, with a green hanging marker */
+.detail-bullets {
+  list-style: none;
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.detail-bullets li {
+  position: relative;
+  padding-left: 20px;
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--graphite);
+}
+
+.detail-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 9px;
+  height: 1px;
+  background: var(--moss);
+}
+
 .detail-bottom-cta {
   margin-top: 48px;
 }

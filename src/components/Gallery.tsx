@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Gallery.css';
 
 type Props = {
@@ -12,21 +12,15 @@ type Props = {
 
 /**
  * A small photo carousel for the project detail page.
- * Rotates on its own every few seconds, pauses while you hover or focus it,
- * and shows minimal prev/next arrows only on hover.
+ * Moves forward only: it advances on its own every few seconds, pauses while
+ * you hover or focus it, and shows one minimal next arrow on hover.
  */
-export default function Gallery({ images, alt, interval = 3000 }: Props) {
+export default function Gallery({ images, alt, interval = 5000 }: Props) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const count = images.length;
 
-  const go = useCallback(
-    (next: number) => {
-      // wrap around in both directions
-      setIndex(((next % count) + count) % count);
-    },
-    [count],
-  );
+  const next = () => setIndex((i) => (i + 1) % count);
 
   useEffect(() => {
     if (paused || count < 2) return;
@@ -68,42 +62,23 @@ export default function Gallery({ images, alt, interval = 3000 }: Props) {
         </div>
 
         {count > 1 && (
-          <>
-            <button
-              type="button"
-              className="gal-arrow gal-arrow--prev"
-              onClick={() => go(index - 1)}
-              aria-label="Previous photo"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m14.5 5-7 7 7 7"
-                />
-              </svg>
-            </button>
-            <button
-              type="button"
-              className="gal-arrow gal-arrow--next"
-              onClick={() => go(index + 1)}
-              aria-label="Next photo"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m9.5 5 7 7-7 7"
-                />
-              </svg>
-            </button>
-          </>
+          <button
+            type="button"
+            className="gal-arrow gal-arrow--next"
+            onClick={next}
+            aria-label="Next photo"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m9.5 5 7 7-7 7"
+              />
+            </svg>
+          </button>
         )}
       </div>
     </div>

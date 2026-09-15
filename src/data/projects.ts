@@ -22,45 +22,47 @@ export const projects: Project[] = [
     summary: {
       problem:
         'Diabetics rely on painful, repetitive finger-prick blood tests to track glucose. We set out to make a non-invasive alternative.',
-      role: 'Research Hardware Team Lead, McMaster. Leading entire hardware scope.',
+      role: 'Hardware Lead, McMaster University (May 2026 to present). Sole hardware engineer on a 5-person team, owning the full signal chain from sensor array to wireless telemetry.',
       stack:
-        'Altium Designer, Embedded C, Python, Signal Conditioning, ADC, Mixed Signal Design, I2C, Wi-Fi/BLE data collection, formal verification.',
+        'Altium Designer, ESP32-S3, Python, Signal Conditioning, ADC, Mixed Signal Design, I2C, 4-Layer PCB Layout, DFT.',
       outcome:
-        'Working prototype. Custom PCB design complete (DFT and DFM). Analog front end and power path validated. Multi-sensor acquisition live. Collecting data. Glucose ML algorithm and correlation in progress.',
+        'Complete schematic in Altium. Breadboard prototype validated on the bench, with supply noise and rail stability faults isolated. 4-layer PCB layout in progress. Python characterization suite in development.',
     },
     sections: [
       {
         heading: 'Overview',
-        body: 'Handheld device that reads breath VOCs such as acetone, which tracks glucose dynamics, as a pain-free alternative to finger-pricks. It captures the VOC signal, conditions it through a low-noise analog chain, and logs environmental context so readings normalize before classification. A research and screening prototype, not a medical device.',
+        body: 'Handheld device that reads breath VOCs such as acetone, which may correlate with glucose dynamics, as a pain-free alternative to finger-pricks. It captures the VOC signal, conditions it through a low-noise analog chain, and logs temperature, humidity, and CO2 so readings can be normalized. A research prototype, not a medical device.',
       },
       {
         heading: 'Approach & Design',
         bullets: [
-          'Designed the complete schematic: multi-sensor network, analog conditioning, ADC, ESP32-S3 control, I2C, mixed-voltage rails.',
+          'Designed the complete schematic in Altium: sensor array, analog signal conditioning, ADC acquisition, ESP32-S3 control, I2C bus, and power subsystem.',
           'MQ138 VOC sensor detects acetone-range compounds; BME688 and SCD-41 compensate for temperature, humidity, and CO2.',
-          'A precision divider scales the 0 to 5V sensor output into the ADS1115’s ±2.048V window, buffered by an OPA333 zero-drift op-amp and filtered by an RC low-pass before the ADC.',
-          'A second ADC channel monitors the 5V rail so every reading normalizes against supply drift.',
-          'Power subsystem: TPS61023 boost, Li-ion charging, power-path management, LDO regulation, protection, and system-level budgeting.',
-          'ESP32-S3 runs an FSM-controlled measurement cycle over I2C and streams data over Wi-Fi and BLE.',
+          'A precision divider scales the 5V sensor output to about 3.0V, buffered by an MCP6001 op-amp and filtered by an RC low-pass before the ADS1115 ADC.',
+          'A second ADC channel monitors the supply rail so readings can be normalized against supply drift.',
+          'Power subsystem: TPS61023 boost conversion, Li-ion charging, and LDO regulation.',
+          '4-layer PCB layout with separated analog and digital sections, controlled return paths, local decoupling, and DFT test points, designed against fabrication capability rules.',
+          'ESP32-S3 controls the measurement cycle over I2C and sends data over wireless telemetry.',
         ],
       },
       {
         heading: 'Challenges',
         bullets: [
           'Thermal isolation: split the enclosure into a dual-chamber design, separating the heated sensor from the intake path so its thermal plume does not corrupt readings.',
-          'Sensor selection: early characterization of the MQ138 metal-oxide sensor showed classic MOX limits, including baseline drift, humidity cross-sensitivity, and slow recovery. Moved toward a photolithographically-fabricated sensing element for better selectivity and stability, which introduced new drive, interface, and mounting constraints.',
-          'Power under full load: the sensor heater and the Wi-Fi/BLE radio draw heavy, bursty current on one battery-backed rail. Sized the boost stage and power path to hold 5V regulation without browning out the MCU.',
+          'Supply noise and rail stability: bench validation of the breadboard prototype with an oscilloscope and multimeter isolated supply noise and rail stability faults before layout.',
+          'Sensor selection: early characterization of the MQ138 metal-oxide sensor showed baseline drift, humidity cross-sensitivity, slow recovery, and weak response at breath-level VOC concentrations. Evaluating alternative sensing approaches.',
+          'Power under full load: the sensor heater and the radio draw heavy, bursty current from one battery-backed rail. Sized the boost stage to hold 5V regulation without browning out the MCU.',
         ],
       },
       {
         heading: 'Results',
         bullets: [
-          'Complete schematic and full analog chain validated.',
-          'Multi-sensor acquisition working over I2C.',
-          'Custom Altium PCB complete; combined DFT/DFM revision in fabrication prep.',
-          'Firmware brings up sensor drivers, ADC configuration, and Wi-Fi/BLE collection, producing structured VOC datasets for future ML-based glucose analysis.',
-          'Preliminary bench and breath-capture tests show clean, repeatable signals; power path characterized end to end.',
-          'Next: fabricate the DFT/DFM board, build the ML pipeline, run drift and repeatability characterization, then correlate against reference glucose data.',
+          'Complete schematic in Altium.',
+          'Breadboard prototype validated; supply noise and rail stability faults isolated.',
+          '4-layer PCB layout in progress with separated analog and digital sections and DFT test points.',
+          'Python test suite in development to characterize baseline drift, noise floor, turn-on transients, and settling time.',
+          'Translated hardware constraints for the software and biomedical members of the team.',
+          'Next: finish layout, fabricate and bring up the board, run the characterization suite, then evaluate correlation against reference glucose data.',
         ],
       },
     ],

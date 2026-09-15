@@ -2,7 +2,9 @@ import { Link, useParams } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
 import Reveal from '../components/Reveal';
 import MediaSlot from '../components/MediaSlot';
+import Gallery from '../components/Gallery';
 import { getProject } from '../data/projects';
+import { getProjectPhotos } from '../data/projectPhotos';
 import NotFound from './NotFound';
 import './ProjectDetail.css';
 
@@ -12,6 +14,9 @@ export default function ProjectDetail() {
 
   // Unknown slug -> show the 404 page.
   if (!project) return <NotFound />;
+
+  // Photos live in src/assets/projects/<slug>/ and are picked up automatically.
+  const photos = getProjectPhotos(project.slug);
 
   const summary = [
     { label: 'Problem', value: project.summary.problem },
@@ -56,10 +61,14 @@ export default function ProjectDetail() {
             </header>
           </Reveal>
 
-          {/* Cover image / render slot */}
+          {/* Photo carousel if the project has photos, otherwise the cover slot */}
           <Reveal delay={0.04}>
             <div className="detail-cover">
-              <MediaSlot src={project.cover} ratio="video" label="Project image / render" />
+              {photos.length > 0 ? (
+                <Gallery images={photos} alt={project.title} />
+              ) : (
+                <MediaSlot src={project.cover} ratio="video" label="Project image / render" />
+              )}
             </div>
           </Reveal>
 

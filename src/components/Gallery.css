@@ -1,0 +1,98 @@
+/* Project photo carousel.
+   Sized for portrait phone photos: a centred frame rather than a full-width
+   banner, so tall shots stay readable without towering over the page. */
+
+.gal {
+  width: min(100%, 430px);
+  margin-inline: auto;
+}
+
+.gal-frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+
+.gal-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0.01, 0.2, 1);
+  will-change: transform;
+}
+
+.gal-slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.gal-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* full colour: these are hardware photos, the green enclosure is the point */
+  filter: none;
+  user-select: none;
+}
+
+/* ---------- arrows: invisible until you hover the frame ---------- */
+.gal-arrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid rgba(42, 38, 32, 0.08);
+  border-radius: 50%;
+  background: rgba(244, 239, 226, 0.78);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  color: var(--ink);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.25s ease,
+    background 0.2s ease;
+}
+
+.gal-arrow--prev {
+  left: 10px;
+}
+.gal-arrow--next {
+  right: 10px;
+}
+
+.gal:hover .gal-arrow,
+.gal:focus-within .gal-arrow {
+  opacity: 1;
+}
+
+.gal-arrow:hover {
+  background: var(--panel);
+}
+
+/* keyboard users get the arrows too, without needing a pointer */
+.gal-arrow:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* touch screens have no hover, so keep the arrows faintly visible */
+@media (hover: none) {
+  .gal-arrow {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gal-track {
+    transition: none;
+  }
+}

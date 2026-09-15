@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import './Gallery.css';
 
+/** Must match the .gal-track transition duration in Gallery.css. */
+const SLIDE_MS = 550;
+
 type Props = {
   /** Image URLs, shown in the order given. */
   images: string[];
@@ -10,30 +13,86 @@ type Props = {
   interval?: number;
 };
 
+const prefersReducedMotion = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /**
- * A small photo carousel for the project detail page.
- * Moves forward only: it advances on its own every few seconds, pauses while
- * you hover or focus it, and shows one minimal next arrow on hover.
+ * Photo carousel for the project detail page.
+ *
+ * The timer always slides the same direction, forever. That works by rendering
+ * one extra copy of the first photo at the end of the track: the timer slides
+ * forward into that copy, then the track jumps back to the real first photo
+ * with the animation switched off. The jump is invisible because the copy and
+ * the original look identical, so it reads as one endless loop instead of
+ * sliding back and forth.
+ *
+ * Both arrows still work for stepping manually in either direction.
  */
 export default function Gallery({ images, alt, interval = 5000 }: Props) {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const count = images.length;
+  const loops = count > 1;
 
-  const next = () => setIndex((i) => (i + 1) % count);
+  // Position along the track. 0..count-1 are the real photos; `count` is the
+  // trailing copy of photo 0, only ever passed through on the way round.
+  const [pos, setPos] = useState(0);
+  // False for the one frame where we snap without sliding.
+  const [animate, setAnimate] = useState(true);
+  const [paused, setPaused] = useState(false);
+  // Bumped on a manual click so the timer restarts from a full interval.
+  const [restart, setRestart] = useState(0);
 
+  // Auto-advance. Always forward.
   useEffect(() => {
-    if (paused || count < 2) return;
-    // Respect the OS "reduce motion" setting: no auto-rotation, arrows still work.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    // `index` is a dependency on purpose: clicking an arrow restarts the timer,
-    // so a manual step always gets a full interval before the next auto-advance.
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % count), interval);
+    if (paused || !loops || prefersReducedMotion()) return;
+    const id = window.setInterval(() => setPos((p) => p + 1), interval);
     return () => window.clearInterval(id);
-  }, [paused, count, interval, index]);
+  }, [paused, loops, interval, restart]);
+
+  // Landed on the trailing copy: let the slide finish, then snap back to the
+  // real photo 0 with animation off.
+  useEffect(() => {
+    if (pos !== count) return;
+    const id = window.setTimeout(
+      () => {
+        setAnimate(false);
+        setPos(0);
+        // Re-enable sliding only after the browser has painted the snap,
+        // otherwise the snap itself would animate.
+        requestAnimationFrame(() => requestAnimationFrame(() => setAnimate(true)));
+      },
+      prefersReducedMotion() ? 0 : SLIDE_MS,
+    );
+    return () => window.clearTimeout(id);
+  }, [pos, count]);
 
   if (count === 0) return null;
+
+  const next = () => {
+    setRestart((r) => r + 1);
+    setPos((p) => (p >= count ? 1 : p + 1));
+  };
+
+  const prev = () => {
+    setRestart((r) => r + 1);
+    if (pos > 0) {
+      setPos(pos - 1);
+      return;
+    }
+    // Going back from the first photo: jump to the trailing copy (which looks
+    // identical, so nothing appears to happen), then slide back from there.
+    setAnimate(false);
+    setPos(count);
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        setAnimate(true);
+        setPos(count - 1);
+      }),
+    );
+  };
+
+  // The trailing copy is a duplicate of photo 0 for looping only.
+  const slides = loops ? [...images, images[0]] : images;
+  const current = pos % count;
 
   return (
     <div
@@ -47,38 +106,70 @@ export default function Gallery({ images, alt, interval = 5000 }: Props) {
       onBlur={() => setPaused(false)}
     >
       <div className="gal-frame">
-        <div className="gal-track" style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
-          {images.map((src, i) => (
-            <div className="gal-slide" key={src} aria-hidden={i !== index}>
-              <img
-                src={src}
-                alt={`${alt}, photo ${i + 1} of ${count}`}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-                draggable={false}
-              />
-            </div>
-          ))}
+        <div
+          className="gal-track"
+          style={{
+            transform: `translate3d(${-pos * 100}%, 0, 0)`,
+            ...(animate ? null : { transition: 'none' }),
+          }}
+        >
+          {slides.map((src, i) => {
+            const isClone = i === count;
+            return (
+              <div
+                className="gal-slide"
+                key={i}
+                aria-hidden={isClone || i !== current}
+              >
+                <img
+                  src={src}
+                  alt={isClone ? '' : `${alt}, photo ${i + 1} of ${count}`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  draggable={false}
+                />
+              </div>
+            );
+          })}
         </div>
 
-        {count > 1 && (
-          <button
-            type="button"
-            className="gal-arrow gal-arrow--next"
-            onClick={next}
-            aria-label="Next photo"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m9.5 5 7 7-7 7"
-              />
-            </svg>
-          </button>
+        {loops && (
+          <>
+            <button
+              type="button"
+              className="gal-arrow gal-arrow--prev"
+              onClick={prev}
+              aria-label="Previous photo"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m14.5 5-7 7 7 7"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="gal-arrow gal-arrow--next"
+              onClick={next}
+              aria-label="Next photo"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m9.5 5 7 7-7 7"
+                />
+              </svg>
+            </button>
+          </>
         )}
       </div>
     </div>

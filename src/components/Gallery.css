@@ -19,6 +19,8 @@
 .gal-track {
   display: flex;
   height: 100%;
+  /* 0.55s is mirrored as SLIDE_MS in Gallery.tsx; change both together, or the
+     loop's invisible snap-back will fire at the wrong moment and show. */
   transition: transform 0.55s cubic-bezier(0.4, 0.01, 0.2, 1);
   will-change: transform;
 }
@@ -38,7 +40,7 @@
   user-select: none;
 }
 
-/* ---------- forward arrow: invisible until you hover the frame ---------- */
+/* ---------- arrows: invisible until you hover the frame ---------- */
 .gal-arrow {
   position: absolute;
   top: 50%;
@@ -61,6 +63,9 @@
     background 0.2s ease;
 }
 
+.gal-arrow--prev {
+  left: 10px;
+}
 .gal-arrow--next {
   right: 10px;
 }
